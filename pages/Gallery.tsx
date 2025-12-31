@@ -1,0 +1,36 @@
+
+import React from 'react';
+
+const Gallery: React.FC = () => {
+  const images = [
+    'https://picsum.photos/seed/gal1/800/800',
+    'https://picsum.photos/seed/gal2/800/600',
+    'https://picsum.photos/seed/gal3/800/800',
+    'https://picsum.photos/seed/gal4/600/800',
+    'https://picsum.photos/seed/gal5/800/600',
+    'https://picsum.photos/seed/gal6/800/800',
+    'https://picsum.photos/seed/gal7/600/800',
+    'https://picsum.photos/seed/gal8/800/600',
+  ];
+
+  return (
+    <div className="min-h-screen pt-20">
+      <div className="bg-white text-primary-900 py-16 text-center">
+        <h1 className="text-5xl font-serif font-bold">Visual Stories</h1>
+        <p className="text-gray-500 mt-4">Glimpses of the unforgettable.</p>
+      </div>
+      <div className="container mx-auto px-6 py-16 columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+        {images.map((src, index) => (
+          <div key={index} className="break-inside-avoid relative group overflow-hidden rounded-sm shadow-xl">
+            <img src={src} alt={`Gallery ${index}`} className="w-full h-auto transition-transform duration-700 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <span className="text-white font-serif italic text-lg tracking-wider">Explore</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Gallery;
