@@ -1,9 +1,28 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Compass, Calendar, UserCheck, Shield, ArrowRight } from 'lucide-react';
+import { Compass, Calendar, UserCheck, Shield, ArrowRight, Share2 } from 'lucide-react';
 import { DESTINATIONS } from '../constants';
 
 const Bespoke: React.FC = () => {
+  const handleShare = (e: React.MouseEvent, dest: typeof DESTINATIONS[0]) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const url = `${window.location.origin}/#/destinations/${dest.id}`;
+    const text = `Bespoke journey idea: ${dest.name} on SOSA Travelz`;
+
+    if (navigator.share) {
+      navigator.share({
+        title: dest.name,
+        text: text,
+        url: url,
+      }).catch((err) => console.log('Error sharing:', err));
+    } else {
+      navigator.clipboard.writeText(url);
+      alert('Link copied to clipboard!');
+    }
+  };
+
   return (
     <div className="min-h-screen pt-20">
       {/* Header */}
@@ -66,15 +85,15 @@ const Bespoke: React.FC = () => {
             </div>
 
             <div className="mt-12">
-              <Link to="/contact" className="bg-primary-900 text-white px-8 py-4 uppercase tracking-widest text-sm font-bold hover:bg-gold-500 transition-colors shadow-lg">
+              <Link to="/contact" className="bg-primary-900 text-white px-8 py-4 uppercase tracking-widest text-sm font-bold hover:bg-gold-500 transition-colors shadow-lg rounded-[6px]">
                 Request Custom Planning
               </Link>
             </div>
           </div>
           
           <div className="grid grid-cols-2 gap-4">
-             <img src="https://picsum.photos/seed/travel2/600/800" className="w-full h-full object-cover rounded-sm shadow-lg mt-12" alt="Details" />
-             <img src="https://picsum.photos/seed/travel3/600/800" className="w-full h-full object-cover rounded-sm shadow-lg" alt="Details" />
+             <img src="https://picsum.photos/seed/travel2/600/800" className="w-full h-full object-cover rounded-[12px] shadow-lg mt-12" alt="Details" />
+             <img src="https://picsum.photos/seed/travel3/600/800" className="w-full h-full object-cover rounded-[12px] shadow-lg" alt="Details" />
           </div>
         </div>
       </div>
@@ -92,12 +111,19 @@ const Bespoke: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {DESTINATIONS.slice(0, 3).map((dest) => (
-               <Link key={dest.id} to={`/destinations/${dest.id}`} className="group block bg-white shadow-lg hover:shadow-2xl transition-all duration-300 rounded-sm overflow-hidden">
+               <Link key={dest.id} to={`/destinations/${dest.id}`} className="group block bg-white shadow-lg hover:shadow-2xl transition-all duration-300 rounded-[12px] overflow-hidden">
                   <div className="relative h-64 overflow-hidden">
                      <img src={dest.imageUrl} alt={dest.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
-                     <div className="absolute top-4 right-4 bg-primary-900/90 text-white px-3 py-1 text-xs font-bold uppercase tracking-widest backdrop-blur-sm">
+                     <div className="absolute top-4 right-4 bg-primary-900/90 text-white px-3 py-1 text-xs font-bold uppercase tracking-widest backdrop-blur-sm rounded-sm">
                         Customize
                      </div>
+                     <button
+                        onClick={(e) => handleShare(e, dest)}
+                        className="absolute bottom-4 right-4 bg-white/90 p-2 rounded-full text-primary-900 hover:text-gold-500 hover:bg-white transition-all shadow-md z-10 opacity-0 group-hover:opacity-100 duration-300"
+                        title="Share"
+                      >
+                        <Share2 size={16} />
+                      </button>
                   </div>
                   <div className="p-6">
                      <h3 className="text-2xl font-serif font-bold text-primary-900 mb-2 group-hover:text-gold-500 transition-colors">{dest.name}</h3>
@@ -111,7 +137,7 @@ const Bespoke: React.FC = () => {
           </div>
            
            <div className="text-center mt-12">
-            <Link to="/destinations" className="inline-block border border-primary-900 text-primary-900 px-8 py-3 uppercase tracking-widest text-sm font-bold hover:bg-primary-900 hover:text-white transition-colors">
+            <Link to="/destinations" className="inline-block border border-primary-900 text-primary-900 px-8 py-3 uppercase tracking-widest text-sm font-bold hover:bg-primary-900 hover:text-white transition-colors rounded-[6px]">
                Explore All Destinations
             </Link>
           </div>

@@ -1,6 +1,14 @@
 
 import { Destination, Testimonial, BlogPost, CountryCode } from './types';
 
+// Helper to generate unique images for a destination to ensure variety and relevance
+const getGallery = (baseImages: string[], keyword: string, count: number = 10) => {
+  const extraImages = Array.from({ length: count }, (_, i) => 
+    `https://loremflickr.com/800/600/${keyword.replace(/\s+/g, ',')}?lock=${i + 100}`
+  );
+  return [...baseImages, ...extraImages];
+};
+
 export const COUNTRY_CODES: CountryCode[] = [
   { code: 'US', name: 'United States', dial_code: '+1' },
   { code: 'GB', name: 'United Kingdom', dial_code: '+44' },
@@ -25,14 +33,24 @@ export const DESTINATIONS: Destination[] = [
     tag: 'Popular',
     longDescription: 'Thailand is a tapestry of diversity, where ancient traditions blend seamlessly with modern luxury. From the bustling streets of Bangkok to the serene hills of Chiang Mai and the limestone karsts of Krabi, our curated journey invites you to explore the Land of Smiles in unparalleled comfort. Stay in private pool villas, enjoy exclusive after-hours temple tours, and dine on Michelin-starred street food.',
     highlights: ['Private yacht tour of Phang Nga Bay', 'Exclusive dinner at Wat Arun', 'Elephant sanctuary volunteer experience', 'Luxury spa retreat in Chiang Mai'],
-    gallery: [
+    gallery: getGallery([
       'https://images.unsplash.com/photo-1563492065599-3520f775eeed?q=80&w=800&auto=format&fit=crop', 
       'https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?q=80&w=800&auto=format&fit=crop', 
-      'https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?q=80&w=800&auto=format&fit=crop'
-    ],
+      'https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1528181304800-259ac0c8d1b5?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1559563458-52c69c8e8743?q=80&w=800&auto=format&fit=crop',
+    ], 'thailand,temple,beach'),
     bestTime: 'November to early April',
     climate: 'Tropical, warm and humid year-round',
     timeZone: 'GMT+7',
+    currency: 'Thai Baht (THB)',
+    language: 'Thai',
+    idealFor: 'Culture, Beach, Nightlife',
+    visaPolicy: 'Visa exemption (30 days) for many nations. E-Visa options.',
+    foodOption: 'Street food paradise. Halal & Veg widely available.',
+    cultureEtiquette: 'Modest dress in temples. No shoes inside.',
+    safety: 'Tourist Police present. Generally safe.',
+    transportation: 'Skytrain (Bangkok), Taxis, Ferries.',
     itinerary: [
       { day: 1, title: 'Arrival in Bangkok', description: 'VIP Meet & Greet at Suvarnabhumi Airport. Private transfer to The Mandarin Oriental. Evening dinner cruise on the Chao Phraya River.' },
       { day: 2, title: 'Temples & Palaces', description: 'Private guided tour of the Grand Palace and Wat Arun. Exclusive access to the Emerald Buddha. Traditional Thai massage in the afternoon.' },
@@ -43,7 +61,9 @@ export const DESTINATIONS: Destination[] = [
       { day: 7, title: 'Leisure & Departure', description: 'Morning at leisure to enjoy the spa or kayaking. Late afternoon private transfer to the airport for your onward journey.' },
       { day: 8, title: 'Departure', description: 'Private transfer to the airport for your return flight home, refreshed and inspired.' }
     ],
-    coordinates: { x: 77.9, y: 42.3 }
+    coordinates: { x: 77.9, y: 42.3 },
+    lat: 13.7563,
+    lng: 100.5018
   },
   {
     id: 'bali',
@@ -55,14 +75,23 @@ export const DESTINATIONS: Destination[] = [
     duration: '6 Nights / 7 Days',
     longDescription: 'Bali is more than a destination; it is a mood, an aspiration, and a tropical state of mind. Beyond the beaches lies a rich cultural heart in Ubud, where art, spirituality, and nature converge. Our bespoke itinerary takes you from the sacred water temples to the cliffside luxury of Uluwatu. Experience a private purification ceremony with a high priest and witness the Kecak fire dance against a sunset backdrop.',
     highlights: ['Sunrise trek to Mount Batur', 'Private purification ceremony', 'Ubud art village tour', 'Luxury cliffside dining in Uluwatu'],
-    gallery: [
+    gallery: getGallery([
       'https://images.unsplash.com/photo-1559628233-eb1b1ee29aa3?q=80&w=800&auto=format&fit=crop', 
       'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?q=80&w=800&auto=format&fit=crop', 
-      'https://images.unsplash.com/photo-1537953773345-d1727908c0f3?q=80&w=800&auto=format&fit=crop'
-    ],
+      'https://images.unsplash.com/photo-1537953773345-d1727908c0f3?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1558005530-a7958896ec60?q=80&w=800&auto=format&fit=crop',
+    ], 'bali,ubud,resort'),
     bestTime: 'April to October',
     climate: 'Tropical monsoon',
     timeZone: 'GMT+8',
+    currency: 'Indonesian Rupiah (IDR)',
+    language: 'Indonesian, Balinese',
+    idealFor: 'Relaxation, Surfing, Spirituality',
+    visaPolicy: 'Visa on Arrival (30 days) for most tourists.',
+    foodOption: 'Diverse: Local Warungs to Vegan Cafes.',
+    cultureEtiquette: 'Respect religious processions. Dress modestly.',
+    safety: 'Safe. Caution with money changers.',
+    transportation: 'Private Driver recommended. Scooters.',
     itinerary: [
       { day: 1, title: 'Welcome to Ubud', description: 'Arrival and private transfer to Mandapa, a Ritz-Carlton Reserve. Welcome foot ritual and dinner overlooking the Ayung River.' },
       { day: 2, title: 'Spiritual Awakening', description: 'Morning yoga session. Visit Tirta Empul for a purification ritual. Afternoon exploration of the Tegalalang Rice Terraces.' },
@@ -72,7 +101,9 @@ export const DESTINATIONS: Destination[] = [
       { day: 6, title: 'Seminyak Style', description: 'Day trip to Seminyak for high-end boutique shopping and lunch at a famous beach club. Farewell dinner at a cliffside restaurant.' },
       { day: 7, title: 'Departure', description: 'Morning leisure before your VIP airport transfer.' }
     ],
-    coordinates: { x: 81.9, y: 54.6 }
+    coordinates: { x: 81.9, y: 54.6 },
+    lat: -8.4095,
+    lng: 115.1889
   },
   {
     id: 'kerala',
@@ -85,14 +116,22 @@ export const DESTINATIONS: Destination[] = [
     tag: 'Nature',
     longDescription: 'Drift through the silent backwaters of Alleppey on a private ultra-luxury houseboat, waking up to the sounds of nature in God\'s Own Country. Kerala offers a slower pace of life, dedicated to wellness and nature. Visit the misty tea gardens of Munnar, indulge in authentic Ayurvedic treatments, and taste the spicy, coconut-rich cuisine that defines this coastal paradise.',
     highlights: ['Private luxury houseboat cruise', 'Authentic Ayurvedic rejuvenation therapy', 'Tea plantation heritage stay', 'Kathakali cultural performance'],
-    gallery: [
+    gallery: getGallery([
       'https://images.unsplash.com/photo-1593693397690-362cb9666fc2?q=80&w=800&auto=format&fit=crop', 
       'https://images.unsplash.com/photo-1589136777351-943288137361?q=80&w=800&auto=format&fit=crop', 
-      'https://images.unsplash.com/photo-1625624773824-34305c120286?q=80&w=800&auto=format&fit=crop'
-    ],
+      'https://images.unsplash.com/photo-1625624773824-34305c120286?q=80&w=800&auto=format&fit=crop',
+    ], 'kerala,backwaters,india'),
     bestTime: 'September to March',
     climate: 'Tropical, heavy monsoons in June-August',
     timeZone: 'GMT+5:30',
+    currency: 'Indian Rupee (INR)',
+    language: 'Malayalam, English',
+    idealFor: 'Wellness, Nature, Culture',
+    visaPolicy: 'e-Visa required for most international travelers.',
+    foodOption: 'Coconut-based cuisine. Seafood & Veg.',
+    cultureEtiquette: 'Conservative dress. Right hand for eating.',
+    safety: 'Very safe. High literacy and healthcare.',
+    transportation: 'Private car, Houseboats, Tuk-tuks.',
     itinerary: [
       { day: 1, title: 'Cochin Colonial Heritage', description: 'Arrive in Cochin. Stay at Brunton Boatyard. Sunset harbour cruise viewing Chinese fishing nets.' },
       { day: 2, title: 'Munnar Hills', description: 'Drive to the tea hills of Munnar. Stay in a colonial tea bungalow. Visit the Tea Museum.' },
@@ -101,7 +140,9 @@ export const DESTINATIONS: Destination[] = [
       { day: 5, title: 'Culture & Cuisine', description: 'Cooking class with a local family. Evening Kathakali dance performance.' },
       { day: 6, title: 'Departure', description: 'Transfer to Cochin airport for departure.' }
     ],
-    coordinates: { x: 71.1, y: 44.5 }
+    coordinates: { x: 71.1, y: 44.5 },
+    lat: 9.9312,
+    lng: 76.2673
   },
   {
     id: 'indonesia',
@@ -113,14 +154,22 @@ export const DESTINATIONS: Destination[] = [
     duration: '9 Nights / 10 Days',
     longDescription: 'Venture beyond the ordinary into the vast archipelago of Indonesia. Discover the prehistoric dragons of Komodo National Park or dive into the world’s most biodiverse marine habitats in Raja Ampat. This journey is for the explorer who refuses to compromise on luxury, offering private phinisi schooner charters and eco-resorts on uninhabited islands.',
     highlights: ['Komodo dragon private tour', 'Diving in Raja Ampat', 'Borobudur sunrise experience', 'Private Phinisi sailing charter'],
-    gallery: [
+    gallery: getGallery([
       'https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?q=80&w=800&auto=format&fit=crop', 
       'https://images.unsplash.com/photo-1571573037233-a3d1354b9d04?q=80&w=800&auto=format&fit=crop', 
-      'https://images.unsplash.com/photo-1596423736737-25e2254e0c38?q=80&w=800&auto=format&fit=crop'
-    ],
+      'https://images.unsplash.com/photo-1596423736737-25e2254e0c38?q=80&w=800&auto=format&fit=crop',
+    ], 'komodo,indonesia,ocean'),
     bestTime: 'May to September',
     climate: 'Tropical rainforest',
     timeZone: 'GMT+7',
+    currency: 'Indonesian Rupiah (IDR)',
+    language: 'Indonesian',
+    idealFor: 'Adventure, Diving, Culture',
+    visaPolicy: 'VoA (30 days). Check specific entry points.',
+    foodOption: 'Spicy & flavorful. Nasi Goreng is staple.',
+    cultureEtiquette: 'Conservative in rural areas. Left hand taboo.',
+    safety: 'Generally safe. Caution in remote areas.',
+    transportation: 'Domestic flights, Phinisi boats.',
     itinerary: [
       { day: 1, title: 'Arrival Java', description: 'Arrive Yogyakarta. Stay at Amanjiwo overlooking Borobudur.' },
       { day: 2, title: 'Borobudur Sunrise', description: 'Private sunrise access to the world’s largest Buddhist temple. Village cycling tour.' },
@@ -133,7 +182,9 @@ export const DESTINATIONS: Destination[] = [
       { day: 9, title: 'Marine Biodiversity', description: 'World-class diving or snorkeling in the Coral Triangle.' },
       { day: 10, title: 'Departure', description: 'Transfer to Sorong and flight back to Jakarta/Bali for international departure.' }
     ],
-    coordinates: { x: 83.0, y: 55.0 }
+    coordinates: { x: 83.0, y: 55.0 },
+    lat: -6.2088,
+    lng: 106.8456
   },
   {
     id: 'santorini',
@@ -146,14 +197,22 @@ export const DESTINATIONS: Destination[] = [
     tag: 'Romantic',
     longDescription: 'The jewel of the Aegean, Santorini creates a dramatic canvas of white Cycladic architecture against volcanic cliffs and the deep blue sea. Our exclusive package secures you the finest caldera-view suites in Oia. Enjoy private wine tastings in ancient vineyards, catamaran cruises to the Red Beach, and history walks through Akrotiri.',
     highlights: ['Sunset yacht cruise', 'Private wine tasting tour', 'Helicopter tour over the Caldera', 'Luxury cave suite accommodation'],
-    gallery: [
+    gallery: getGallery([
       'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?q=80&w=800&auto=format&fit=crop', 
       'https://images.unsplash.com/photo-1601581875309-fafbf2d3ed92?q=80&w=800&auto=format&fit=crop', 
-      'https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=800&auto=format&fit=crop'
-    ],
+      'https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=800&auto=format&fit=crop',
+    ], 'santorini,greece,aegean'),
     bestTime: 'Late April to early November',
     climate: 'Mediterranean',
     timeZone: 'GMT+2',
+    currency: 'Euro (EUR)',
+    language: 'Greek, English',
+    idealFor: 'Romance, Sunsets, Luxury',
+    visaPolicy: 'Schengen Visa rules apply.',
+    foodOption: 'Mediterranean. Fresh seafood & local wines.',
+    cultureEtiquette: 'Siesta time in afternoons. Tipping appreciated.',
+    safety: 'Very safe. Steep steps require caution.',
+    transportation: 'Walking (Oia/Fira), ATVs, Private Transfers.',
     itinerary: [
       { day: 1, title: 'Arrival in Oia', description: 'Private helicopter transfer from Athens (optional) or VIP airport pick-up. Check into Canaves Oia. Sunset dinner.' },
       { day: 2, title: 'Sailing the Caldera', description: 'Private catamaran cruise. Visit the Hot Springs, Red Beach, and White Beach. BBQ lunch on board.' },
@@ -161,7 +220,9 @@ export const DESTINATIONS: Destination[] = [
       { day: 4, title: 'History & Heights', description: 'Visit the Akrotiri excavations. Hike from Fira to Oia (optional) or enjoy a private photo session.' },
       { day: 5, title: 'Departure', description: 'Morning breakfast with caldera views. Private transfer to the airport.' }
     ],
-    coordinates: { x: 57.0, y: 29.8 }
+    coordinates: { x: 57.0, y: 29.8 },
+    lat: 36.3932,
+    lng: 25.4615
   },
   {
     id: 'maldives',
@@ -174,14 +235,22 @@ export const DESTINATIONS: Destination[] = [
     tag: 'Luxury',
     longDescription: 'Escape to a world where the ocean acts as your private playground. The Maldives defines barefoot luxury. We partner with the most exclusive private islands to offer you overwater villas with glass floors, underwater dining experiences, and personalized butler service. Perfect for honeymooners or anyone seeking absolute seclusion.',
     highlights: ['Private island picnic', 'Underwater restaurant dining', 'Sunset dolphin cruise', 'Overwater spa treatments'],
-    gallery: [
+    gallery: getGallery([
       'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=800&auto=format&fit=crop', 
       'https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?q=80&w=800&auto=format&fit=crop', 
-      'https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?q=80&w=800&auto=format&fit=crop'
-    ],
+      'https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?q=80&w=800&auto=format&fit=crop',
+    ], 'maldives,resort,underwater'),
     bestTime: 'November to April',
     climate: 'Tropical',
     timeZone: 'GMT+5',
+    currency: 'Maldivian Rufiyaa (MVR)',
+    language: 'Dhivehi, English',
+    idealFor: 'Honeymoon, Diving, Seclusion',
+    visaPolicy: 'Free Visa on Arrival (30 days) for all.',
+    foodOption: 'International resorts. Seafood heavy.',
+    cultureEtiquette: 'Modest dress on local islands. No alcohol outside resorts.',
+    safety: 'Extremely safe (Resort islands).',
+    transportation: 'Seaplanes, Speedboats.',
     itinerary: [
       { day: 1, title: 'Seaplane Arrival', description: 'VIP arrival at Velana Airport. Scenic seaplane transfer to Soneva Jani or similar private island.' },
       { day: 2, title: 'Lagoon Life', description: 'Relax in your overwater villa. Snorkel directly from your deck. Sunset dolphin watching cruise.' },
@@ -190,7 +259,9 @@ export const DESTINATIONS: Destination[] = [
       { day: 5, title: 'Marine Biology', description: 'Guided snorkeling with the resort’s marine biologist to plant coral. Stargazing at the observatory.' },
       { day: 6, title: 'Departure', description: 'Seaplane transfer back to the international airport.' }
     ],
-    coordinates: { x: 70.3, y: 48.2 }
+    coordinates: { x: 70.3, y: 48.2 },
+    lat: 3.2028,
+    lng: 73.2207
   },
   {
     id: 'swiss',
@@ -202,14 +273,22 @@ export const DESTINATIONS: Destination[] = [
     duration: '6 Nights / 7 Days',
     longDescription: 'Breath in the crisp alpine air of Switzerland. Whether you prefer the glitz of St. Moritz in winter or the blooming meadows of Interlaken in summer, the Swiss Alps offer grandeur on a massive scale. Travel via the Glacier Express in excellence class, stay in historic grand hotels, and indulge in private chocolate and cheese tasting workshops.',
     highlights: ['Glacier Express Excellence Class', 'Private ski instructor in Zermatt', 'Lake Geneva luxury cruise', 'Chocolate making workshop'],
-    gallery: [
+    gallery: getGallery([
       'https://images.unsplash.com/photo-1552353617-3bfd679b3bdd?q=80&w=800&auto=format&fit=crop', 
       'https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=800&auto=format&fit=crop', 
-      'https://images.unsplash.com/photo-1483058712412-4245e9b90334?q=80&w=800&auto=format&fit=crop'
-    ],
+      'https://images.unsplash.com/photo-1483058712412-4245e9b90334?q=80&w=800&auto=format&fit=crop',
+    ], 'switzerland,alps,mountain'),
     bestTime: 'Dec-Mar (Skiing), Jun-Sep (Hiking)',
     climate: 'Alpine',
     timeZone: 'GMT+1',
+    currency: 'Swiss Franc (CHF)',
+    language: 'German, French, Italian',
+    idealFor: 'Skiing, Hiking, Scenery',
+    visaPolicy: 'Schengen Visa rules apply.',
+    foodOption: 'Fondue, Raclette, Chocolate. High quality.',
+    cultureEtiquette: 'Punctuality is key. Greetings are formal.',
+    safety: 'One of the safest countries in the world.',
+    transportation: 'World-class Trains (SBB), Cable cars.',
     itinerary: [
       { day: 1, title: 'Arrival Zurich', description: 'Private transfer to Lucerne. Stay at Bürgenstock Resort. Evening lake view dining.' },
       { day: 2, title: 'Mount Pilatus', description: 'Golden Round Trip: Boat, Cogwheel railway, and cable car to the summit of Mt. Pilatus.' },
@@ -219,7 +298,9 @@ export const DESTINATIONS: Destination[] = [
       { day: 6, title: 'Geneva Luxury', description: 'Transfer to Geneva. Private watchmaking workshop or chocolate tasting tour.' },
       { day: 7, title: 'Departure', description: 'Private transfer to Geneva Airport.' }
     ],
-    coordinates: { x: 52.3, y: 23.7 }
+    coordinates: { x: 52.3, y: 23.7 },
+    lat: 46.6023,
+    lng: 8.3248
   },
   {
     id: 'paris',
@@ -231,14 +312,22 @@ export const DESTINATIONS: Destination[] = [
     duration: '5 Nights / 6 Days',
     longDescription: 'Paris is an emotion. We invite you to see the French capital through the eyes of a local connoisseur. Skip the lines at the Louvre with a private art historian, enjoy a dinner cruise on the Seine, and shop with a personal stylist in Le Marais. Stay in a palace hotel with views of the Eiffel Tower and experience the epitome of romance and sophistication.',
     highlights: ['Private Louvre tour', 'Seine River dinner cruise', 'Personal shopper experience', 'Versailles after-hours tour'],
-    gallery: [
+    gallery: getGallery([
       'https://images.unsplash.com/photo-1565881606991-789a8dff9625?q=80&w=800&auto=format&fit=crop', 
       'https://images.unsplash.com/photo-1509040216641-05d97d25c65e?q=80&w=800&auto=format&fit=crop', 
-      'https://images.unsplash.com/photo-1460306855393-0410f61241c7?q=80&w=800&auto=format&fit=crop'
-    ],
+      'https://images.unsplash.com/photo-1460306855393-0410f61241c7?q=80&w=800&auto=format&fit=crop',
+    ], 'paris,france,eiffel'),
     bestTime: 'April to June, September to November',
     climate: 'Temperate',
     timeZone: 'GMT+1',
+    currency: 'Euro (EUR)',
+    language: 'French',
+    idealFor: 'Art, Fashion, Romance',
+    visaPolicy: 'Schengen Visa rules apply.',
+    foodOption: 'Gastronomy capital. Bistros & Patisseries.',
+    cultureEtiquette: 'Greet with "Bonjour". Speak quietly.',
+    safety: 'Watch for pickpockets in tourist areas.',
+    transportation: 'Metro, RER, Taxis, Walking.',
     itinerary: [
       { day: 1, title: 'Bienvenue à Paris', description: 'VIP Meet & Greet at CDG. Transfer to Hotel Ritz or Shangri-La. Evening Seine River champagne cruise.' },
       { day: 2, title: 'The Louvre Exclusive', description: 'Private tour of the Louvre with an art historian avoiding the crowds. Afternoon tea at Angelina.' },
@@ -247,8 +336,395 @@ export const DESTINATIONS: Destination[] = [
       { day: 5, title: 'Montmartre & Cabaret', description: 'Walking tour of Montmartre artists\' quarter. Farewell dinner at the Eiffel Tower (Jules Verne). Optional Moulin Rouge show.' },
       { day: 6, title: 'Au Revoir', description: 'Private transfer to the airport.' }
     ],
-    coordinates: { x: 50.6, y: 22.8 }
+    coordinates: { x: 50.6, y: 22.8 },
+    lat: 48.8566,
+    lng: 2.3522
   },
+  {
+    id: 'kyoto',
+    name: 'Kyoto',
+    location: 'Japan',
+    description: 'Ancient temples, sublime gardens, and traditional geisha districts.',
+    imageUrl: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=1920&auto=format&fit=crop',
+    priceStart: '$3,800',
+    duration: '5 Nights / 6 Days',
+    tag: 'Cultural',
+    longDescription: 'Immerse yourself in the cultural heart of Japan. Kyoto offers a serene escape into a world of Zen gardens, historic temples, and traditional tea ceremonies. Walk through the iconic Fushimi Inari torii gates, spot geishas in Gion, and stay in a luxury ryokan with a private onsen.',
+    highlights: ['Private tea ceremony', 'Exclusive geisha dinner', 'Arashiyama bamboo grove tour', 'Fushimi Inari shrine visit'],
+    gallery: getGallery([
+      'https://images.unsplash.com/photo-1624253321171-1be53e12f5f4?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1528360983277-13d9b152c6d7?q=80&w=800&auto=format&fit=crop',
+    ], 'kyoto,japan,temple'),
+    bestTime: 'March to May, October to November',
+    climate: 'Temperate',
+    timeZone: 'GMT+9',
+    currency: 'Japanese Yen (JPY)',
+    language: 'Japanese',
+    idealFor: 'History, Culture, Nature',
+    visaPolicy: 'Visa-free for many (90 days). Check status.',
+    foodOption: 'Kaiseki, Tofu, Matcha. High hygiene.',
+    cultureEtiquette: 'Bow when greeting. No tipping. Quietness.',
+    safety: 'Extremely safe. Very low crime.',
+    transportation: 'Buses, Subways, Walking.',
+    itinerary: [
+      { day: 1, title: 'Arrival in Kyoto', description: 'Private transfer to your Ryokan. Welcome Kaiseki dinner.' },
+      { day: 2, title: 'Ancient Temples', description: 'Guided tour of Kinkaku-ji (Golden Pavilion) and Ryoan-ji Zen garden.' },
+      { day: 3, title: 'Arashiyama & Bamboo', description: 'Morning walk in the bamboo grove. Visit Tenryu-ji temple. Boat ride on the Hozu river.' },
+      { day: 4, title: 'Culture of Gion', description: 'Walking tour of Gion district. Evening entertainment with a Maiko or Geisha.' },
+      { day: 5, title: 'Nara Day Trip', description: 'Visit Nara Park to see the friendly deer and the giant Buddha at Todai-ji.' },
+      { day: 6, title: 'Departure', description: 'Transfer to Osaka Kansai Airport.' }
+    ],
+    coordinates: { x: 80.5, y: 35.0 },
+    lat: 35.0116,
+    lng: 135.7681
+  },
+  {
+    id: 'amalfi',
+    name: 'Amalfi Coast',
+    location: 'Italy',
+    description: 'Dramatic cliffs, pastel villages, and the sparkling Tyrrhenian Sea.',
+    imageUrl: 'https://images.unsplash.com/photo-1633321088355-d0f8c1eaad4b?q=80&w=1920&auto=format&fit=crop',
+    priceStart: '$4,200',
+    duration: '6 Nights / 7 Days',
+    tag: 'Romantic',
+    longDescription: 'The Amalfi Coast is a vertical landscape of terraced gardens, lemon groves, and pastel-colored villages clinging to the cliffs. Experience the "La Dolce Vita" lifestyle with private boat tours to Capri, sunset aperitivos in Positano, and driving a vintage convertible along the coastal roads.',
+    highlights: ['Private boat to Capri', 'Lemon grove tour & Limoncello tasting', 'Sunset dinner in Positano', 'Vintage car coastal drive'],
+    gallery: getGallery([
+      'https://images.unsplash.com/photo-1533904350260-56144f541978?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?q=80&w=800&auto=format&fit=crop',
+    ], 'amalfi,italy,coast'),
+    bestTime: 'May to September',
+    climate: 'Mediterranean',
+    timeZone: 'GMT+2',
+    currency: 'Euro (EUR)',
+    language: 'Italian',
+    idealFor: 'Views, Luxury, Food',
+    visaPolicy: 'Schengen Visa rules apply.',
+    foodOption: 'Seafood, Pasta, Limoncello.',
+    cultureEtiquette: 'Dress smart-casual. "Coperto" charge is normal.',
+    safety: 'Safe. Roads are narrow and winding.',
+    transportation: 'Ferries, Private Drivers, Buses.',
+    itinerary: [
+      { day: 1, title: 'Benvenuti a Positano', description: 'Arrival and private transfer to Le Sirenuse. Sunset cocktails on the terrace.' },
+      { day: 2, title: 'Capri by Sea', description: 'Full-day private yacht charter to Capri. Visit the Blue Grotto and lunch at Il Riccio.' },
+      { day: 3, title: 'Ravello Heights', description: 'Visit the gardens of Villa Cimbrone and Villa Rufolo in Ravello. Classical music concert.' },
+      { day: 4, title: 'Path of the Gods', description: 'Guided hike for breathtaking views or a cooking class with a local nonna.' },
+      { day: 5, title: 'Pompeii & Vesuvius', description: 'Private excursion to the ancient ruins of Pompeii and wine tasting on Mount Vesuvius.' },
+      { day: 6, title: 'Sorrento Sunset', description: 'Day trip to Sorrento. Shopping for inlaid wood and ceramics. Farewell dinner.' },
+      { day: 7, title: 'Departure', description: 'Transfer to Naples Airport.' }
+    ],
+    coordinates: { x: 53.0, y: 32.0 },
+    lat: 40.6340,
+    lng: 14.6027
+  },
+  {
+    id: 'bora-bora',
+    name: 'Bora Bora',
+    location: 'French Polynesia',
+    description: 'A romantic atoll surrounded by a turquoise lagoon and barrier reef.',
+    imageUrl: 'https://images.unsplash.com/photo-1580719500552-e95261e6bd95?q=80&w=1920&auto=format&fit=crop',
+    priceStart: '$5,500',
+    duration: '6 Nights / 7 Days',
+    tag: 'Honeymoon',
+    longDescription: 'Often called the most beautiful island in the world, Bora Bora is the epitome of romance. Stay in an iconic overwater bungalow with direct access to the lagoon. Spend your days snorkeling with rays, enjoying private motu picnics, and watching the sunset over Mount Otemanu.',
+    highlights: ['Overwater bungalow stay', 'Shark & Ray snorkeling safari', 'Private Motu picnic', 'Sunset cruise'],
+    gallery: getGallery([
+      'https://images.unsplash.com/photo-1532408840135-cbf96604856e?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=800&auto=format&fit=crop',
+    ], 'borabora,tropical,island'),
+    bestTime: 'May to October',
+    climate: 'Tropical',
+    timeZone: 'GMT-10',
+    currency: 'CFP Franc (XPF)',
+    language: 'French, Tahitian',
+    idealFor: 'Honeymoon, Luxury, Water Sports',
+    visaPolicy: 'French overseas territory rules (check specifically).',
+    foodOption: 'French-Polynesian fusion. Fresh fish.',
+    cultureEtiquette: 'Friendly & laid back. Remove shoes in homes.',
+    safety: 'Very safe. Sun protection needed.',
+    transportation: 'Boats between motus.',
+    itinerary: [
+      { day: 1, title: 'Arrival in Paradise', description: 'Boat transfer to Four Seasons Bora Bora. Settle into your overwater suite.' },
+      { day: 2, title: 'Lagoon Exploration', description: 'Snorkeling safari to see sharks and stingrays in their natural habitat.' },
+      { day: 3, title: 'Polynesian Culture', description: 'Island tour by 4x4. Learn about local history, legends, and sarong tying.' },
+      { day: 4, title: 'Private Motu Escape', description: 'Boat drop-off on a secluded islet for a lobster lunch with feet in the water.' },
+      { day: 5, title: 'Spa & Wellness', description: 'Polynesian massage at the spa using local monoi oil. Relax by the infinity pool.' },
+      { day: 6, title: 'Romantic Sunset', description: 'Private sunset cruise on a catamaran with champagne.' },
+      { day: 7, title: 'Departure', description: 'Boat transfer to the airport for your flight back to Tahiti.' }
+    ],
+    coordinates: { x: 5.0, y: 60.0 },
+    lat: -16.5004,
+    lng: -151.7415
+  },
+  {
+    id: 'cape-town',
+    name: 'Cape Town',
+    location: 'South Africa',
+    description: 'A coming together of cultures, cuisines, and landscapes at the tip of Africa.',
+    imageUrl: 'https://images.unsplash.com/photo-1580060839134-75a5edca2e99?q=80&w=1920&auto=format&fit=crop',
+    priceStart: '$2,800',
+    duration: '5 Nights / 6 Days',
+    tag: 'Adventure',
+    longDescription: 'Cape Town is a vibrant city where nature meets urban sophistication. Ascend Table Mountain, drive the scenic Chapman’s Peak, and visit the penguins at Boulders Beach. Our itinerary also includes a taste of the Cape Winelands, renowned for world-class wines and culinary excellence.',
+    highlights: ['Table Mountain cable car', 'Cape Winelands tasting', 'Boulders Beach penguins', 'Robben Island tour'],
+    gallery: getGallery([
+      'https://images.unsplash.com/photo-1576485290814-1c72aa4bbb8e?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop',
+    ], 'capetown,africa,wine'),
+    bestTime: 'March to May, September to November',
+    climate: 'Mediterranean',
+    timeZone: 'GMT+2',
+    currency: 'South African Rand (ZAR)',
+    language: 'English, Afrikaans, Xhosa',
+    idealFor: 'Adventure, Wine, Nature',
+    visaPolicy: 'Visa-free for many (90 days).',
+    foodOption: 'Cape Malay, Seafood, Braai (BBQ).',
+    cultureEtiquette: 'Tipping 10-15%. Friendly interactions.',
+    safety: 'Exercise caution at night. Use private transport.',
+    transportation: 'Uber, Private Car, Rental Car.',
+    itinerary: [
+      { day: 1, title: 'Arrival in Cape Town', description: 'Transfer to the Silo Hotel at the V&A Waterfront. Dinner at The Test Kitchen.' },
+      { day: 2, title: 'City & Mountain', description: 'Cable car up Table Mountain. City orientation tour including Bo-Kaap.' },
+      { day: 3, title: 'Cape Peninsula', description: 'Full day tour to Cape Point. Visit the penguins at Boulders Beach.' },
+      { day: 4, title: 'Winelands', description: 'Day trip to Stellenbosch and Franschhoek. Wine tasting and gourmet lunch.' },
+      { day: 5, title: 'History & Culture', description: 'Ferry to Robben Island for a historical tour. Afternoon at leisure for shopping.' },
+      { day: 6, title: 'Departure', description: 'Transfer to Cape Town International Airport.' }
+    ],
+    coordinates: { x: 55.0, y: 80.0 },
+    lat: -33.9249,
+    lng: 18.4241
+  },
+  {
+    id: 'machu-picchu',
+    name: 'Machu Picchu',
+    location: 'Peru',
+    description: 'The Lost City of the Incas, set high in the Andes Mountains.',
+    imageUrl: 'https://images.unsplash.com/photo-1587595431973-160d0d94add1?q=80&w=1920&auto=format&fit=crop',
+    priceStart: '$3,100',
+    duration: '7 Nights / 8 Days',
+    tag: 'History',
+    longDescription: 'Journey to the heart of the Inca Empire. Start in Cusco, the archaeological capital of the Americas, before boarding the luxury Hiram Bingham train to Machu Picchu. Explore the mystical ruins with a private guide and absorb the energy of this ancient citadel.',
+    highlights: ['Hiram Bingham luxury train', 'Private tour of Machu Picchu', 'Sacred Valley exploration', 'Cusco colonial history'],
+    gallery: getGallery([
+      'https://images.unsplash.com/photo-1526392060635-9d6019884377?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1533630654593-b26a195e679c?q=80&w=800&auto=format&fit=crop',
+    ], 'machupicchu,peru,incas'),
+    bestTime: 'May to October',
+    climate: 'Highland subtropical',
+    timeZone: 'GMT-5',
+    currency: 'Peruvian Sol (PEN)',
+    language: 'Spanish',
+    idealFor: 'History, Trekking, Bucket List',
+    visaPolicy: 'Visa-free for many. Check reciprocity.',
+    foodOption: 'Peruvian. Quinoa, Corn, Alpaca.',
+    cultureEtiquette: 'Ask before photographing locals.',
+    safety: 'Altitude sickness precaution. Safe tourist zones.',
+    transportation: 'Trains (Inca Rail), Buses.',
+    itinerary: [
+      { day: 1, title: 'Arrival in Lima', description: 'Transfer to Miraflores. Culinary tour of Lima’s top restaurants.' },
+      { day: 2, title: 'Fly to Cusco', description: 'Flight to Cusco. Acclimatization and light city tour of Coricancha.' },
+      { day: 3, title: 'Sacred Valley', description: 'Visit Pisac market and Ollantaytambo fortress. Lunch at a hacienda.' },
+      { day: 4, title: 'Train to Citadel', description: 'Belmond Hiram Bingham train to Aguas Calientes. Afternoon tea.' },
+      { day: 5, title: 'Machu Picchu', description: 'Guided tour of the citadel at sunrise. Hiking Huayna Picchu (optional).' },
+      { day: 6, title: 'Return to Cusco', description: 'Vistadome train back to Cusco. Farewell dinner with folklore show.' },
+      { day: 7, title: 'Departure', description: 'Fly back to Lima for international connection.' }
+    ],
+    coordinates: { x: 30.0, y: 65.0 },
+    lat: -13.1631,
+    lng: -72.5450
+  },
+  {
+    id: 'reykjavik',
+    name: 'Reykjavik',
+    location: 'Iceland',
+    description: 'Gateway to the land of fire and ice, auroras, and geothermal spas.',
+    imageUrl: 'https://images.unsplash.com/photo-1521320226546-87b106956014?q=80&w=1920&auto=format&fit=crop',
+    priceStart: '$3,500',
+    duration: '5 Nights / 6 Days',
+    tag: 'Nature',
+    longDescription: 'Iceland offers landscapes like nowhere else on earth. From the Blue Lagoon’s milky waters to the erupting geysers and massive waterfalls of the Golden Circle. In winter, hunt for the Northern Lights; in summer, enjoy the Midnight Sun. Stay in luxury lodges surrounded by nature.',
+    highlights: ['Blue Lagoon retreat', 'Golden Circle private tour', 'Northern Lights hunt (Winter)', 'South Coast waterfalls'],
+    gallery: getGallery([
+      'https://images.unsplash.com/photo-1476610182048-b716b8518aae?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1504829857797-ddff29c27927?q=80&w=800&auto=format&fit=crop',
+    ], 'iceland,reykjavik,aurora'),
+    bestTime: 'Feb-Mar (Lights), Jun-Aug (Summer)',
+    climate: 'Subpolar oceanic',
+    timeZone: 'GMT',
+    currency: 'Icelandic Króna (ISK)',
+    language: 'Icelandic',
+    idealFor: 'Nature, Northern Lights, Adventure',
+    visaPolicy: 'Schengen Visa rules apply.',
+    foodOption: 'Fresh fish, Lamb. Expensive but high quality.',
+    cultureEtiquette: 'Shower before pools (strict). Tipping not expected.',
+    safety: 'Very safe. Weather is the main hazard.',
+    transportation: 'Rental Car, Tour Buses.',
+    itinerary: [
+      { day: 1, title: 'Arrival & Relaxation', description: 'Transfer to The Retreat at Blue Lagoon. Private lagoon access.' },
+      { day: 2, title: 'Reykjavik City', description: 'Walking tour of the capital. Visit Hallgrimskirkja and Harpa Concert Hall.' },
+      { day: 3, title: 'Golden Circle', description: 'Private Super Jeep tour of Thingvellir, Geysir, and Gullfoss waterfall.' },
+      { day: 4, title: 'South Coast', description: 'Visit Seljalandsfoss and Skogafoss. Black sand beach at Reynisfjara.' },
+      { day: 5, title: 'Glacier Adventure', description: 'Snowmobiling on Langjokull glacier or ice cave tour (seasonal).' },
+      { day: 6, title: 'Departure', description: 'Transfer to Keflavik International Airport.' }
+    ],
+    coordinates: { x: 45.0, y: 15.0 },
+    lat: 64.1466,
+    lng: -21.9426
+  },
+  {
+    id: 'petra',
+    name: 'Petra',
+    location: 'Jordan',
+    description: 'The Rose City, carved directly into vibrant red, white, and pink sandstone cliffs.',
+    imageUrl: 'https://images.unsplash.com/photo-1579606864168-d6d7ed1c3792?q=80&w=1920&auto=format&fit=crop',
+    priceStart: '$2,600',
+    duration: '4 Nights / 5 Days',
+    tag: 'History',
+    longDescription: 'Discover the ancient Nabataean city of Petra, a UNESCO World Heritage site. Walk through the Siq to reveal the Treasury, explore the Royal Tombs, and experience genuine Bedouin hospitality. Extend your trip to float in the Dead Sea or camp under the stars in Wadi Rum.',
+    highlights: ['Petra by Night', 'Wadi Rum 4x4 tour', 'Dead Sea floating', 'Little Petra visit'],
+    gallery: getGallery([
+      'https://images.unsplash.com/photo-1548265003-8d6978168257?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1501236570302-9061b24c3c8b?q=80&w=800&auto=format&fit=crop',
+    ], 'petra,jordan,desert'),
+    bestTime: 'March to May, September to November',
+    climate: 'Desert',
+    timeZone: 'GMT+3',
+    currency: 'Jordanian Dinar (JOD)',
+    language: 'Arabic',
+    idealFor: 'History, Photography, Desert',
+    visaPolicy: 'Visa on Arrival (Jordan Pass recommended).',
+    foodOption: 'Mansaf, Mezze, Bedouin Tea.',
+    cultureEtiquette: 'Conservative dress. Hospitality is key.',
+    safety: 'Safe. Tourist police present.',
+    transportation: 'Walking, Donkeys/Camels, Driver.',
+    itinerary: [
+      { day: 1, title: 'Arrival Amman', description: 'Transfer to hotel. Welcome dinner with Jordanian mezze.' },
+      { day: 2, title: 'The Dead Sea', description: 'Drive to the Dead Sea. Float in the mineral-rich waters. Spa treatment.' },
+      { day: 3, title: 'Petra Discovery', description: 'Drive to Petra. Full day guided tour of the archaeological site.' },
+      { day: 4, title: 'Wadi Rum', description: 'Jeep tour in the desert of Wadi Rum (Valley of the Moon). Traditional Zarb lunch.' },
+      { day: 5, title: 'Departure', description: 'Transfer back to Queen Alia International Airport.' }
+    ],
+    coordinates: { x: 62.0, y: 40.0 },
+    lat: 30.3285,
+    lng: 35.4444
+  },
+  {
+    id: 'queenstown',
+    name: 'Queenstown',
+    location: 'New Zealand',
+    description: 'The adventure capital of the world, sitting on the shores of Lake Wakatipu.',
+    imageUrl: 'https://images.unsplash.com/photo-1589871162483-4318c5382e46?q=80&w=1920&auto=format&fit=crop',
+    priceStart: '$3,900',
+    duration: '7 Nights / 8 Days',
+    tag: 'Adventure',
+    longDescription: 'Queenstown is a playground for thrill-seekers and nature lovers alike. Surrounded by the Southern Alps, it offers everything from bungy jumping and jet boating to world-class Pinot Noir vineyards. Cruise the majestic Milford Sound and enjoy the laid-back Kiwi vibe.',
+    highlights: ['Milford Sound helicopter cruise', 'Shotover Jet boat ride', 'Central Otago wine tour', 'Skyline Gondola & Luge'],
+    gallery: getGallery([
+      'https://images.unsplash.com/photo-1507699622177-388898d9903d?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1506456346282-3d8434857d4a?q=80&w=800&auto=format&fit=crop',
+    ], 'queenstown,newzealand,adventure'),
+    bestTime: 'December to February (Summer)',
+    climate: 'Oceanic',
+    timeZone: 'GMT+12',
+    currency: 'New Zealand Dollar (NZD)',
+    language: 'English',
+    idealFor: 'Adrenaline, Landscapes, Wine',
+    visaPolicy: 'NZeTA required for visa-waiver countries.',
+    foodOption: 'Fergburger, Lamb, Pinot Noir.',
+    cultureEtiquette: 'Friendly. Respect nature (Tiaki Promise).',
+    safety: 'Very safe. Adventure sports regulated.',
+    transportation: 'Rental Car, Shuttles.',
+    itinerary: [
+      { day: 1, title: 'Arrival Queenstown', description: 'Transfer to Matakauri Lodge. Dinner with lake views.' },
+      { day: 2, title: 'Milford Sound', description: 'Fly-Cruise-Fly experience to Milford Sound. The ultimate scenic day trip.' },
+      { day: 3, title: 'Adventure Day', description: 'Shotover Jet boat ride or 4WD tour of Skippers Canyon.' },
+      { day: 4, title: 'Wine & Dine', description: 'Tour of Central Otago wineries. Lunch at Amisfield Bistro.' },
+      { day: 5, title: 'Glenorchy', description: 'Scenic drive to Glenorchy. Lord of the Rings location tour.' },
+      { day: 6, title: 'Leisure', description: 'Day at leisure for shopping, hiking, or spa.' },
+      { day: 7, title: 'Departure', description: 'Transfer to Queenstown Airport.' }
+    ],
+    coordinates: { x: 95.0, y: 85.0 },
+    lat: -45.0312,
+    lng: 168.6626
+  },
+  {
+    id: 'marrakech',
+    name: 'Marrakech',
+    location: 'Morocco',
+    description: 'A sensory overload of spices, souks, and stunning architecture.',
+    imageUrl: 'https://images.unsplash.com/photo-1597212618440-806262de4f6b?q=80&w=1920&auto=format&fit=crop',
+    priceStart: '$2,200',
+    duration: '4 Nights / 5 Days',
+    tag: 'Culture',
+    longDescription: 'Marrakech is a city of contrast, where ancient traditions meet modern luxury. Stay in a traditional Riad, get lost in the winding alleys of the Medina, and marvel at the Koutoubia Mosque. Visit the Majorelle Garden and enjoy a sunset dinner overlooking the bustling Jemaa el-Fnaa square.',
+    highlights: ['Private Medina tour', 'Majorelle Garden (YSL)', 'Atlas Mountains day trip', 'Hammam spa experience'],
+    gallery: getGallery([
+      'https://images.unsplash.com/photo-1539020140153-e479b8c22e70?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1553535698-132d0df09b43?q=80&w=800&auto=format&fit=crop',
+    ], 'marrakech,morocco,souk'),
+    bestTime: 'March to May, September to November',
+    climate: 'Semi-arid',
+    timeZone: 'GMT+1',
+    currency: 'Moroccan Dirham (MAD)',
+    language: 'Arabic, Berber',
+    idealFor: 'Sensory, Shopping, Culture',
+    visaPolicy: 'Visa-free for many (90 days).',
+    foodOption: 'Tagine, Couscous, Mint Tea.',
+    cultureEtiquette: 'Conservative dress. Haggle in souks.',
+    safety: 'Safe. Be firm with touts.',
+    transportation: 'Walking (Medina), Petit Taxis.',
+    itinerary: [
+      { day: 1, title: 'Arrival Marrakech', description: 'Transfer to Royal Mansour. Traditional mint tea welcome.' },
+      { day: 2, title: 'The Red City', description: 'Guided tour of Bahia Palace, Saadian Tombs, and the Souks.' },
+      { day: 3, title: 'Gardens & Design', description: 'Visit Yves Saint Laurent Museum and Majorelle Garden. Lunch in the New City.' },
+      { day: 4, title: 'Atlas Mountains', description: 'Day trip to the Ourika Valley. Lunch with a Berber family.' },
+      { day: 5, title: 'Departure', description: 'Transfer to Marrakech Menara Airport.' }
+    ],
+    coordinates: { x: 48.0, y: 38.0 },
+    lat: 31.6295,
+    lng: -7.9811
+  },
+  {
+    id: 'serengeti',
+    name: 'Serengeti',
+    location: 'Tanzania',
+    description: 'Witness the Great Migration on the endless plains of East Africa.',
+    imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920&auto=format&fit=crop',
+    priceStart: '$5,800',
+    duration: '6 Nights / 7 Days',
+    tag: 'Safari',
+    longDescription: 'The Serengeti National Park is synonymous with the African safari. It is home to the Great Migration, where millions of wildebeest and zebra traverse the plains. Experience thrilling game drives to see the Big Five, sleep in luxury tented camps, and take a hot air balloon ride at sunrise.',
+    highlights: ['Great Migration viewing', 'Big Five game drives', 'Hot air balloon safari', 'Ngorongoro Crater visit'],
+    gallery: getGallery([
+      'https://images.unsplash.com/photo-1535940342674-4b55e8848d7d?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1526725702345-bdda2b97ef73?q=80&w=800&auto=format&fit=crop',
+    ], 'serengeti,lion,zebra'),
+    bestTime: 'June to October (Migration)',
+    climate: 'Savanna',
+    timeZone: 'GMT+3',
+    currency: 'Tanzanian Shilling (TZS)',
+    language: 'Swahili, English',
+    idealFor: 'Wildlife, Photography, Nature',
+    visaPolicy: 'Visa required (e-Visa recommended).',
+    foodOption: 'Lodges serve international & local cuisine.',
+    cultureEtiquette: 'Respect wildlife rules. Safari dress code.',
+    safety: 'Safe in lodges/camps. Follow guide instructions.',
+    transportation: '4x4 Safari Vehicles, Light Aircraft.',
+    itinerary: [
+      { day: 1, title: 'Arrival Arusha', description: 'Transfer to Arusha Coffee Lodge. Briefing for the safari.' },
+      { day: 2, title: 'Into the Wild', description: 'Flight to Serengeti airstrip. Afternoon game drive en route to camp.' },
+      { day: 3, title: 'Endless Plains', description: 'Full day game drives tracking the migration and predators.' },
+      { day: 4, title: 'Balloon Safari', description: 'Sunrise hot air balloon flight followed by a champagne bush breakfast.' },
+      { day: 5, title: 'Ngorongoro', description: 'Drive to Ngorongoro Conservation Area. Visit a Maasai village.' },
+      { day: 6, title: 'The Crater', description: 'Descend into the Ngorongoro Crater for a game drive. High density of wildlife.' },
+      { day: 7, title: 'Departure', description: 'Drive back to Arusha for your flight home.' }
+    ],
+    coordinates: { x: 65.0, y: 65.0 },
+    lat: -2.3333,
+    lng: 34.8333
+  }
 ];
 
 export const PILGRIMAGE_SITES: Destination[] = [
@@ -257,7 +733,7 @@ export const PILGRIMAGE_SITES: Destination[] = [
     name: 'Rishikesh',
     location: 'Uttarakhand, India',
     description: 'The Yoga Capital of the World, by the holy banks of the Ganges.',
-    imageUrl: 'https://images.unsplash.com/photo-1565355610266-963d72ba252e?q=80&w=800&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1589216631166-511475751264?q=80&w=800&auto=format&fit=crop',
     duration: '5 Nights / 6 Days'
   },
   {
@@ -265,7 +741,7 @@ export const PILGRIMAGE_SITES: Destination[] = [
     name: 'Golden Temple',
     location: 'Punjab, India',
     description: 'Amritsar’s spiritual sanctuary representing human brotherhood and equality.',
-    imageUrl: 'https://images.unsplash.com/photo-1582555627230-0eb2c3325603?q=80&w=800&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1628867375685-c052825d5763?q=80&w=800&auto=format&fit=crop',
     duration: '3 Nights / 4 Days'
   },
   {
@@ -273,7 +749,7 @@ export const PILGRIMAGE_SITES: Destination[] = [
     name: 'Tirupati',
     location: 'Andhra Pradesh, India',
     description: 'The sacred abode of Lord Venkateswara nestled in the Seshachalam Hills.',
-    imageUrl: 'https://images.unsplash.com/photo-1628151016625-f772ba9c8496?q=80&w=800&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1589136777351-943288137361?q=80&w=800&auto=format&fit=crop',
     duration: '2 Nights / 3 Days'
   },
   {
@@ -281,9 +757,41 @@ export const PILGRIMAGE_SITES: Destination[] = [
     name: 'Himalayan Temples',
     location: 'Uttarakhand, India',
     description: 'Ancient shrines of Kedarnath and Badrinath amidst majestic snowy peaks.',
-    imageUrl: 'https://images.unsplash.com/photo-1616428782352-793a38890250?q=80&w=800&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1598322636066-6f77f53a9856?q=80&w=800&auto=format&fit=crop',
     duration: '9 Nights / 10 Days'
   },
+  {
+    id: 'varanasi',
+    name: 'Varanasi',
+    location: 'Uttar Pradesh, India',
+    description: 'The spiritual capital of India, where life and death meet on the ghats of the Ganges.',
+    imageUrl: 'https://images.unsplash.com/photo-1561361513-2d000a50f0dc?q=80&w=800&auto=format&fit=crop',
+    duration: '3 Nights / 4 Days'
+  },
+  {
+    id: 'bodhgaya',
+    name: 'Bodh Gaya',
+    location: 'Bihar, India',
+    description: 'The most holy place for Buddhists, where Prince Siddhartha attained Enlightenment.',
+    imageUrl: 'https://images.unsplash.com/photo-1565035010268-a3816f98589a?q=80&w=800&auto=format&fit=crop',
+    duration: '2 Nights / 3 Days'
+  },
+  {
+    id: 'vaishno-devi',
+    name: 'Vaishno Devi',
+    location: 'Jammu & Kashmir, India',
+    description: 'A holy cave shrine dedicated to Goddess Durga, nestled in the Trikuta Mountains.',
+    imageUrl: 'https://images.unsplash.com/photo-1605626359556-9d3329971946?q=80&w=800&auto=format&fit=crop',
+    duration: '3 Nights / 4 Days'
+  },
+  {
+    id: 'rameswaram',
+    name: 'Rameswaram',
+    location: 'Tamil Nadu, India',
+    description: 'A pilgrimage center on Pamban Island, known for its ornate corridors and sacred wells.',
+    imageUrl: 'https://images.unsplash.com/photo-1582510003544-79c1b11ec982?q=80&w=800&auto=format&fit=crop',
+    duration: '3 Nights / 4 Days'
+  }
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
@@ -291,6 +799,8 @@ export const TESTIMONIALS: Testimonial[] = [
     id: '1',
     name: 'Eleanor Sterling',
     location: 'London, UK',
+    designation: 'Luxury Lifestyle Blogger',
+    imageUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop',
     quote: 'SOSA Travelz curated the most exquisite anniversary trip to the Maldives. Every detail was handled with grace and precision.',
     rating: 5,
   },
@@ -298,6 +808,8 @@ export const TESTIMONIALS: Testimonial[] = [
     id: '2',
     name: 'Rajesh Gupta',
     location: 'Mumbai, India',
+    designation: 'CEO, TechFlow',
+    imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop',
     quote: 'Our corporate retreat in Bali was flawless. The MICE team understood our needs perfectly. Highly recommended.',
     rating: 5,
   },
@@ -305,7 +817,27 @@ export const TESTIMONIALS: Testimonial[] = [
     id: '3',
     name: 'Sarah Jenkins',
     location: 'New York, USA',
+    designation: 'Wellness Coach',
+    imageUrl: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&auto=format&fit=crop',
     quote: 'The Divya Path journey to Rishikesh was transformative. Luxurious yet deeply spiritual.',
+    rating: 5,
+  },
+  {
+    id: '4',
+    name: 'Michael Chen',
+    location: 'Singapore',
+    designation: 'Architect',
+    imageUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop',
+    quote: 'The architectural tour of Barcelona was insightful and perfectly paced. SOSA really knows how to cater to professionals.',
+    rating: 5,
+  },
+  {
+    id: '5',
+    name: 'Elena Rodriguez',
+    location: 'Madrid, Spain',
+    designation: 'Fashion Designer',
+    imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop',
+    quote: 'Marrakech was a dream. The private sourcing tour for fabrics was exactly what I needed. Impeccable service.',
     rating: 5,
   },
 ];

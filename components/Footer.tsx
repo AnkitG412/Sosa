@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Linkedin, Twitter, Mail, MapPin, Phone } from 'lucide-react';
+import { Mail, MapPin, Phone } from 'lucide-react';
 import Logo from './Logo';
 
 const Footer: React.FC = () => {
@@ -17,12 +17,6 @@ const Footer: React.FC = () => {
             <p className="text-gray-400 mb-6 leading-relaxed">
               Curating exceptional journeys for the discerning traveler. From spiritual pilgrimages to high-end corporate retreats, we redefine luxury travel.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-gold-500 transition-colors"><Facebook size={20} /></a>
-              <a href="#" className="text-gray-400 hover:text-gold-500 transition-colors"><Instagram size={20} /></a>
-              <a href="#" className="text-gray-400 hover:text-gold-500 transition-colors"><Twitter size={20} /></a>
-              <a href="#" className="text-gray-400 hover:text-gold-500 transition-colors"><Linkedin size={20} /></a>
-            </div>
           </div>
 
           {/* Links Section - Grouped Closer on Right */}
@@ -56,7 +50,7 @@ const Footer: React.FC = () => {
               <ul className="space-y-4">
                 <li className="flex items-start space-x-3 text-gray-400">
                   <MapPin className="text-gold-500 mt-1 flex-shrink-0" size={18} />
-                  <span>123 Luxury Lane, Financial District, New York, NY 10005</span>
+                  <span>Kanke road, Lake Avenue, Lane No – 3, near Iskcon, Jharkhand, 834008 India</span>
                 </li>
                 <li className="flex items-center space-x-3 text-gray-400">
                   <Phone className="text-gold-500 flex-shrink-0" size={18} />

@@ -12,7 +12,9 @@
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-router-dom": "^7.11.0",
-    "lucide-react": "^0.562.0"
+    "lucide-react": "^0.562.0",
+    "@googlemaps/js-api-loader": "1.16.2",
+    "leaflet": "1.9.4"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

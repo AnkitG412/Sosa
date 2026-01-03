@@ -2,7 +2,6 @@
 import React from 'react';
 import { PILGRIMAGE_SITES } from '../constants';
 import { Link } from 'react-router-dom';
-import { Clock } from 'lucide-react';
 
 const DivyaPath: React.FC = () => {
   return (
@@ -29,10 +28,10 @@ const DivyaPath: React.FC = () => {
       {/* Sites Grid */}
       <div className="bg-white pb-20">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {PILGRIMAGE_SITES.map((site) => (
-              <div key={site.id} className="group bg-white rounded-sm shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 flex flex-col h-full">
-                <div className="relative h-72 overflow-hidden">
+              <div key={site.id} className="bg-white shadow-lg rounded-[12px] overflow-hidden group hover:shadow-2xl transition-all duration-300 flex flex-col">
+                <div className="relative h-80 overflow-hidden">
                    <img 
                     src={site.imageUrl} 
                     alt={site.name} 
@@ -40,23 +39,13 @@ const DivyaPath: React.FC = () => {
                    />
                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300"></div>
                 </div>
-                <div className="p-8 text-center flex flex-col flex-grow">
-                  <h3 className="text-2xl font-serif font-bold text-amber-600 mb-3">{site.name}</h3>
-                  <div className="w-12 h-0.5 bg-amber-200 mx-auto mb-4"></div>
-                  <p className="text-gray-600 mb-4 text-sm leading-relaxed flex-grow">{site.description}</p>
+                <div className="p-8 flex flex-col flex-grow">
+                  <h3 className="text-2xl font-serif font-bold text-amber-600 mb-2">{site.name}</h3>
+                  <p className="text-gray-600 text-base mb-6 line-clamp-3 flex-grow leading-relaxed">{site.description}</p>
                   
-                  {site.duration && (
-                    <div className="flex items-center justify-center text-gray-500 mb-6 font-sans">
-                      <Clock size={16} className="text-amber-500 mr-2" />
-                      <span className="text-xs font-bold uppercase tracking-widest">{site.duration}</span>
-                    </div>
-                  )}
-
-                  <div>
-                    <Link to="/contact" className="inline-block text-primary-900 font-bold uppercase text-xs tracking-widest border-b-2 border-amber-500 pb-1 hover:text-amber-600 hover:border-amber-600 transition-colors">
-                        Plan Yatra
-                    </Link>
-                  </div>
+                  <Link to="/contact" className="block w-full text-center border border-amber-500 text-amber-600 py-3 text-sm uppercase tracking-widest font-bold hover:bg-amber-500 hover:text-white transition-colors rounded-[6px]">
+                      Plan Yatra
+                  </Link>
                 </div>
               </div>
             ))}
@@ -66,7 +55,7 @@ const DivyaPath: React.FC = () => {
 
       <div className="bg-amber-600 py-16 text-center text-white">
           <h2 className="text-3xl font-serif font-bold mb-6">Start Your Spiritual Awakening</h2>
-          <Link to="/contact" className="bg-white text-amber-600 px-8 py-3 uppercase tracking-widest font-bold hover:bg-primary-900 hover:text-white transition-colors shadow-lg">
+          <Link to="/contact" className="bg-white text-amber-600 px-8 py-3 uppercase tracking-widest font-bold hover:bg-primary-900 hover:text-white transition-colors shadow-lg rounded-[6px]">
             Enquire Now
           </Link>
       </div>

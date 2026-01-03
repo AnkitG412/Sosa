@@ -21,7 +21,7 @@ const Gallery: React.FC = () => {
       </div>
       <div className="container mx-auto px-6 py-16 columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
         {images.map((src, index) => (
-          <div key={index} className="break-inside-avoid relative group overflow-hidden rounded-sm shadow-xl">
+          <div key={index} className="break-inside-avoid relative group overflow-hidden rounded-[12px] shadow-xl">
             <img src={src} alt={`Gallery ${index}`} className="w-full h-auto transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
               <span className="text-white font-serif italic text-lg tracking-wider">Explore</span>

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { BLOG_POSTS } from '../constants';
 
@@ -13,7 +14,7 @@ const Blog: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {BLOG_POSTS.map((post) => (
             <article key={post.id} className="group cursor-pointer">
-              <div className="overflow-hidden rounded-sm mb-6 aspect-video">
+              <div className="overflow-hidden rounded-[12px] mb-6 aspect-video">
                 <img src={post.imageUrl} alt={post.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               </div>
               <div className="flex items-center gap-4 text-xs uppercase tracking-widest text-gray-400 mb-3">

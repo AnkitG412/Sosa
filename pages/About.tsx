@@ -25,8 +25,7 @@ const About: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24 items-center">
            <div className="relative h-full min-h-[500px]">
-               <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=800&auto=format&fit=crop" alt="The Journey" className="w-full h-full object-cover rounded-sm shadow-xl" />
-               <div className="absolute inset-0 border-2 border-gold-500 transform translate-x-4 translate-y-4 -z-10 rounded-sm hidden md:block"></div>
+               <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=800&auto=format&fit=crop" alt="The Journey" className="w-full h-full object-cover rounded-[12px] shadow-xl" />
            </div>
            
            <div className="flex flex-col justify-center space-y-10">
@@ -59,7 +58,7 @@ const About: React.FC = () => {
         {/* Features / Guarantees Section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-24">
             {features.map((feature, index) => (
-                <div key={index} className="border-2 border-dashed border-gold-500 rounded-lg py-10 px-4 flex flex-col items-center text-center h-full justify-center hover:bg-cream transition-all duration-300 group hover:-translate-y-1">
+                <div key={index} className="border-2 border-dashed border-gold-500 rounded-[12px] py-10 px-4 flex flex-col items-center text-center h-full justify-center hover:bg-cream transition-all duration-300 group hover:-translate-y-1">
                     <feature.icon size={36} className="text-primary-900 mb-4 group-hover:text-gold-600 transition-colors" strokeWidth={1.5} />
                     <p className="font-bold text-primary-900 text-xs uppercase tracking-widest leading-relaxed group-hover:text-gold-600 transition-colors">
                         {feature.label}
@@ -71,7 +70,7 @@ const About: React.FC = () => {
         {/* Process Section */}
         <div className="max-w-5xl mx-auto mb-24">
             <h2 className="text-3xl font-serif font-bold text-primary-900 text-center mb-10">Our Process</h2>
-            <div className="bg-white border border-gray-200 shadow-sm rounded-lg overflow-hidden">
+            <div className="bg-white border border-gray-200 shadow-sm rounded-[12px] overflow-hidden">
                 <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200">
                     <div className="p-8 text-center hover:bg-cream transition-colors duration-300">
                         <Map size={40} className="mx-auto text-gold-500 mb-4" strokeWidth={1.5} />
@@ -102,7 +101,7 @@ const About: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {DESTINATIONS.slice(0, 3).map((dest) => (
                 <Link key={dest.id} to={`/destinations/${dest.id}`} className="block group">
-                  <div className="relative overflow-hidden rounded-sm shadow-lg aspect-[4/5] mb-6">
+                  <div className="relative overflow-hidden rounded-[12px] shadow-lg aspect-[4/5] mb-6">
                     <img 
                       src={dest.imageUrl} 
                       alt={dest.name} 

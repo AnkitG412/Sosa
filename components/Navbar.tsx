@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, Mail, Instagram, Facebook, Linkedin } from 'lucide-react';
+import { Menu, X, Phone, Mail } from 'lucide-react';
 import Logo from './Logo';
 
 const Navbar: React.FC = () => {
@@ -30,6 +30,7 @@ const Navbar: React.FC = () => {
 
   // Updated Navigation Links
   const navLinks = [
+    { name: 'Home', path: '/' },
     { name: 'Destinations', path: '/destinations' },
     { name: 'Bespoke Journey', path: '/bespoke' },
     { name: 'Corporate MICE', path: '/mice' },
@@ -48,18 +49,13 @@ const Navbar: React.FC = () => {
         }`}
       >
         <div className="container mx-auto px-6 flex justify-between items-center text-[10px] md:text-xs tracking-widest uppercase font-sans font-bold">
-          <div className="flex items-center space-x-4 md:space-x-6">
+          <div className="flex items-center space-x-4 md:space-x-6 w-full justify-start">
             <a href="tel:+918986892922" className="flex items-center hover:text-white transition-colors">
               <Phone size={12} className="mr-2" /> <span className="hidden md:inline">+91 89868 92922</span><span className="md:hidden">Call Us</span>
             </a>
             <a href="mailto:concierge@sosatravelz.com" className="flex items-center hover:text-white transition-colors">
               <Mail size={12} className="mr-2" /> <span className="hidden md:inline">concierge@sosatravelz.com</span><span className="md:hidden">Email</span>
             </a>
-          </div>
-          <div className="flex items-center space-x-4">
-             <a href="#" className="hover:text-white transition-colors"><Instagram size={14} /></a>
-             <a href="#" className="hover:text-white transition-colors"><Facebook size={14} /></a>
-             <a href="#" className="hover:text-white transition-colors"><Linkedin size={14} /></a>
           </div>
         </div>
       </div>
@@ -108,9 +104,9 @@ const Navbar: React.FC = () => {
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? (
-              <X className="text-white" size={32} />
+              <X className="text-gold-500" size={32} />
             ) : (
-              <Menu className="text-white" size={32} />
+              <Menu className="text-gold-500" size={32} />
             )}
           </button>
         </div>
@@ -139,6 +135,13 @@ const Navbar: React.FC = () => {
             </Link>
           );
         })}
+
+        {/* Call Us Button for Mobile */}
+        <div className="w-full p-4 border-t border-white/10 bg-black/20">
+             <a href="tel:+918986892922" className="flex items-center justify-center gap-3 w-full bg-gold-500 text-white font-bold uppercase tracking-widest text-sm py-3 hover:bg-gold-600 transition-colors shadow-lg rounded-[6px]">
+                <Phone size={16} /> Call Concierge
+             </a>
+        </div>
       </div>
     </header>
   );

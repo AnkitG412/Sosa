@@ -8,7 +8,7 @@ export interface ItineraryItem {
 export interface Destination {
   id: string;
   name: string;
-  location?: string; // New field
+  location?: string;
   description: string;
   imageUrl: string;
   priceStart?: string;
@@ -20,8 +20,19 @@ export interface Destination {
   bestTime?: string;
   climate?: string;
   timeZone?: string;
-  itinerary?: ItineraryItem[]; // New field
-  coordinates?: { x: number; y: number }; // Percentage coordinates (0-100)
+  currency?: string;
+  language?: string;
+  itinerary?: ItineraryItem[];
+  coordinates?: { x: number; y: number };
+  lat?: number;
+  lng?: number;
+  // New detailed insights fields
+  idealFor?: string;
+  visaPolicy?: string;
+  foodOption?: string;
+  cultureEtiquette?: string;
+  safety?: string;
+  transportation?: string;
 }
 
 export interface Testimonial {
@@ -30,6 +41,8 @@ export interface Testimonial {
   location: string;
   quote: string;
   rating: number;
+  imageUrl?: string;
+  designation?: string;
 }
 
 export interface BlogPost {

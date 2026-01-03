@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { TESTIMONIALS } from '../constants';
 import { Quote, Star } from 'lucide-react';
@@ -10,7 +11,7 @@ const Testimonials: React.FC = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {TESTIMONIALS.map((t) => (
-            <div key={t.id} className="bg-white p-8 rounded-lg shadow-lg relative pt-12">
+            <div key={t.id} className="bg-white p-8 rounded-[12px] shadow-lg relative pt-12">
               <div className="absolute -top-6 left-8 bg-gold-500 w-12 h-12 flex items-center justify-center rounded-full text-white shadow-md">
                 <Quote size={20} fill="currentColor" />
               </div>
