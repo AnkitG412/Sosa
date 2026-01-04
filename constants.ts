@@ -740,7 +740,7 @@ export const PILGRIMAGE_SITES: Destination[] = [
     id: 'golden-temple',
     name: 'Golden Temple',
     location: 'Punjab, India',
-    description: 'Amritsar’s spiritual sanctuary representing human brotherhood and equality.',
+    description: 'Amritsar\'s spiritual sanctuary representing human brotherhood and equality.',
     imageUrl: 'https://images.unsplash.com/photo-1628867375685-c052825d5763?q=80&w=800&auto=format&fit=crop',
     duration: '3 Nights / 4 Days'
   },

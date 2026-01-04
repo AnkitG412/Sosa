@@ -1,0 +1,51 @@
+DESTINATION IMAGES SETUP GUIDE
+================================
+
+IMPORTANT: This file explains how to set up images for each destination.
+
+STRUCTURE:
+----------
+Each destination folder should contain:
+- main.jpg (or main.png) - The main hero image
+- gallery-1.jpg, gallery-2.jpg, etc. - Gallery images
+
+CURRENT DESTINATIONS:
+---------------------
+1. thailand
+2. bali
+3. kerala
+4. indonesia
+5. santorini
+6. maldives
+7. swiss
+8. paris
+9. kyoto
+10. amalfi
+11. bora-bora
+12. cape-town
+13. machu-picchu
+14. reykjavik
+15. petra
+16. queenstown
+17. marrakech
+18. serengeti
+
+QUICK START:
+------------
+1. For each destination, place your images in the corresponding folder
+2. Name the main image as "main.jpg"
+3. Name gallery images as "gallery-1.jpg", "gallery-2.jpg", etc.
+4. The JSON file (Public/destinations.json) will automatically reference these paths
+
+EXAMPLE:
+--------
+To update Thailand images:
+1. Go to: Public/images/destinations/thailand/
+2. Replace main.jpg with your Thailand hero image
+3. Replace gallery-1.jpg, gallery-2.jpg, etc. with your gallery images
+4. Refresh the browser to see changes
+
+NOTE: The destinations.json file uses paths like:
+"/images/destinations/thailand/main.jpg"
+These paths are relative to the Public folder.
+

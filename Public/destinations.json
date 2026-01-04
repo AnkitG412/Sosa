@@ -1,0 +1,226 @@
+{
+  "destinations": [
+    {
+      "id": "thailand",
+      "name": "Thailand",
+      "location": "Southeast Asia",
+      "description": "Experience the perfect blend of vibrant street life, sacred temples, and pristine beaches.",
+      "imageUrl": "/images/destinations/thailand/main.jpg",
+      "priceStart": "$2,500",
+      "duration": "7 Nights / 8 Days",
+      "tag": "Popular",
+      "longDescription": "Thailand is a tapestry of diversity, where ancient traditions blend seamlessly with modern luxury. From the bustling streets of Bangkok to the serene hills of Chiang Mai and the limestone karsts of Krabi, our curated journey invites you to explore the Land of Smiles in unparalleled comfort. Stay in private pool villas, enjoy exclusive after-hours temple tours, and dine on Michelin-starred street food.",
+      "highlights": [
+        "Private yacht tour of Phang Nga Bay",
+        "Exclusive dinner at Wat Arun",
+        "Elephant sanctuary volunteer experience",
+        "Luxury spa retreat in Chiang Mai"
+      ],
+      "gallery": [
+        "/images/destinations/thailand/gallery-1.jpg",
+        "/images/destinations/thailand/gallery-2.jpg",
+        "/images/destinations/thailand/gallery-3.jpg",
+        "/images/destinations/thailand/gallery-4.jpg",
+        "/images/destinations/thailand/gallery-5.jpg"
+      ],
+      "bestTime": "November to early April",
+      "climate": "Tropical, warm and humid year-round",
+      "timeZone": "GMT+7",
+      "currency": "Thai Baht (THB)",
+      "language": "Thai",
+      "idealFor": "Culture, Beach, Nightlife",
+      "visaPolicy": "Visa exemption (30 days) for many nations. E-Visa options.",
+      "foodOption": "Street food paradise. Halal & Veg widely available.",
+      "cultureEtiquette": "Modest dress in temples. No shoes inside.",
+      "safety": "Tourist Police present. Generally safe.",
+      "transportation": "Skytrain (Bangkok), Taxis, Ferries.",
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Bangkok",
+          "description": "VIP Meet & Greet at Suvarnabhumi Airport. Private transfer to The Mandarin Oriental. Evening dinner cruise on the Chao Phraya River."
+        },
+        {
+          "day": 2,
+          "title": "Temples & Palaces",
+          "description": "Private guided tour of the Grand Palace and Wat Arun. Exclusive access to the Emerald Buddha. Traditional Thai massage in the afternoon."
+        },
+        {
+          "day": 3,
+          "title": "Flight to Chiang Mai",
+          "description": "Fly to the cultural heart of the north. Check into Four Seasons Resort. Evening visit to the Night Bazaar."
+        },
+        {
+          "day": 4,
+          "title": "Gentle Giants",
+          "description": "Ethical elephant sanctuary experience. Learn about conservation and feed the elephants. Private picnic lunch by a waterfall."
+        },
+        {
+          "day": 5,
+          "title": "South to Krabi",
+          "description": "Flight to Krabi. Speedboat transfer to Rayavadee Resort, accessible only by sea. Sunset cocktails on Phranang Beach."
+        },
+        {
+          "day": 6,
+          "title": "Island Hopping",
+          "description": "Private yacht charter around Phi Phi Islands. Snorkeling in crystal clear waters. Gourmet lunch served on board."
+        },
+        {
+          "day": 7,
+          "title": "Leisure & Departure",
+          "description": "Morning at leisure to enjoy the spa or kayaking. Late afternoon private transfer to the airport for your onward journey."
+        },
+        {
+          "day": 8,
+          "title": "Departure",
+          "description": "Private transfer to the airport for your return flight home, refreshed and inspired."
+        }
+      ],
+      "coordinates": { "x": 77.9, "y": 42.3 },
+      "lat": 13.7563,
+      "lng": 100.5018
+    },
+    {
+      "id": "bali",
+      "name": "Bali",
+      "location": "Indonesia",
+      "description": "A tropical paradise offering spiritual retreats, lush rice terraces, and volcanic coastlines.",
+      "imageUrl": "/images/destinations/bali/main.jpg",
+      "priceStart": "$1,800",
+      "duration": "6 Nights / 7 Days",
+      "longDescription": "Bali is more than a destination; it is a mood, an aspiration, and a tropical state of mind. Beyond the beaches lies a rich cultural heart in Ubud, where art, spirituality, and nature converge. Our bespoke itinerary takes you from the sacred water temples to the cliffside luxury of Uluwatu. Experience a private purification ceremony with a high priest and witness the Kecak fire dance against a sunset backdrop.",
+      "highlights": [
+        "Sunrise trek to Mount Batur",
+        "Private purification ceremony",
+        "Ubud art village tour",
+        "Luxury cliffside dining in Uluwatu"
+      ],
+      "gallery": [
+        "/images/destinations/bali/gallery-1.jpg",
+        "/images/destinations/bali/gallery-2.jpg",
+        "/images/destinations/bali/gallery-3.jpg",
+        "/images/destinations/bali/gallery-4.jpg"
+      ],
+      "bestTime": "April to October",
+      "climate": "Tropical monsoon",
+      "timeZone": "GMT+8",
+      "currency": "Indonesian Rupiah (IDR)",
+      "language": "Indonesian, Balinese",
+      "idealFor": "Relaxation, Surfing, Spirituality",
+      "visaPolicy": "Visa on Arrival (30 days) for most tourists.",
+      "foodOption": "Diverse: Local Warungs to Vegan Cafes.",
+      "cultureEtiquette": "Respect religious processions. Dress modestly.",
+      "safety": "Safe. Caution with money changers.",
+      "transportation": "Private Driver recommended. Scooters.",
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Welcome to Ubud",
+          "description": "Arrival and private transfer to Mandapa, a Ritz-Carlton Reserve. Welcome foot ritual and dinner overlooking the Ayung River."
+        },
+        {
+          "day": 2,
+          "title": "Spiritual Awakening",
+          "description": "Morning yoga session. Visit Tirta Empul for a purification ritual. Afternoon exploration of the Tegalalang Rice Terraces."
+        },
+        {
+          "day": 3,
+          "title": "Volcanic Sunrise",
+          "description": "Early morning trek to Mount Batur for sunrise (optional) or a scenic helicopter tour over the crater. Afternoon spa treatment."
+        },
+        {
+          "day": 4,
+          "title": "Move to Uluwatu",
+          "description": "Transfer to the southern coast. Check into Alila Villas Uluwatu. Sunset drinks at the iconic cliff-edge cabana."
+        },
+        {
+          "day": 5,
+          "title": "Culture & Cliffs",
+          "description": "Private surfing lesson or beach relaxation. Evening visit to Uluwatu Temple for the Kecak Fire Dance performance."
+        },
+        {
+          "day": 6,
+          "title": "Seminyak Style",
+          "description": "Day trip to Seminyak for high-end boutique shopping and lunch at a famous beach club. Farewell dinner at a cliffside restaurant."
+        },
+        {
+          "day": 7,
+          "title": "Departure",
+          "description": "Morning leisure before your VIP airport transfer."
+        }
+      ],
+      "coordinates": { "x": 81.9, "y": 54.6 },
+      "lat": -8.4095,
+      "lng": 115.1889
+    },
+    {
+      "id": "kerala",
+      "name": "Kerala",
+      "location": "Southern India",
+      "description": "God's Own Country. Serene backwaters, Ayurvedic healing, and emerald tea plantations.",
+      "imageUrl": "/images/destinations/kerala/main.jpg",
+      "priceStart": "$1,200",
+      "duration": "5 Nights / 6 Days",
+      "tag": "Nature",
+      "longDescription": "Drift through the silent backwaters of Alleppey on a private ultra-luxury houseboat, waking up to the sounds of nature in God's Own Country. Kerala offers a slower pace of life, dedicated to wellness and nature. Visit the misty tea gardens of Munnar, indulge in authentic Ayurvedic treatments, and taste the spicy, coconut-rich cuisine that defines this coastal paradise.",
+      "highlights": [
+        "Private luxury houseboat cruise",
+        "Authentic Ayurvedic rejuvenation therapy",
+        "Tea plantation heritage stay",
+        "Kathakali cultural performance"
+      ],
+      "gallery": [
+        "/images/destinations/kerala/gallery-1.jpg",
+        "/images/destinations/kerala/gallery-2.jpg",
+        "/images/destinations/kerala/gallery-3.jpg"
+      ],
+      "bestTime": "September to March",
+      "climate": "Tropical, heavy monsoons in June-August",
+      "timeZone": "GMT+5:30",
+      "currency": "Indian Rupee (INR)",
+      "language": "Malayalam, English",
+      "idealFor": "Wellness, Nature, Culture",
+      "visaPolicy": "e-Visa required for most international travelers.",
+      "foodOption": "Coconut-based cuisine. Seafood & Veg.",
+      "cultureEtiquette": "Conservative dress. Right hand for eating.",
+      "safety": "Very safe. High literacy and healthcare.",
+      "transportation": "Private car, Houseboats, Tuk-tuks.",
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Cochin Colonial Heritage",
+          "description": "Arrive in Cochin. Stay at Brunton Boatyard. Sunset harbour cruise viewing Chinese fishing nets."
+        },
+        {
+          "day": 2,
+          "title": "Munnar Hills",
+          "description": "Drive to the tea hills of Munnar. Stay in a colonial tea bungalow. Visit the Tea Museum."
+        },
+        {
+          "day": 3,
+          "title": "The Backwaters",
+          "description": "Transfer to Alleppey. Board your private luxury houseboat (Kettuvallam). Cruise through canals and dine on deck."
+        },
+        {
+          "day": 4,
+          "title": "Kumarakom Wellness",
+          "description": "Disembark and transfer to Kumarakom Lake Resort. Consultation with an Ayurvedic physician and therapeutic massage."
+        },
+        {
+          "day": 5,
+          "title": "Culture & Cuisine",
+          "description": "Cooking class with a local family. Evening Kathakali dance performance."
+        },
+        {
+          "day": 6,
+          "title": "Departure",
+          "description": "Transfer to Cochin airport for departure."
+        }
+      ],
+      "coordinates": { "x": 71.1, "y": 44.5 },
+      "lat": 9.9312,
+      "lng": 76.2673
+    }
+  ]
+}
+
