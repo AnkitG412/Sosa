@@ -144,9 +144,9 @@ const DestinationDetail: React.FC = () => {
     { name: 'Emirates', logo: 'https://cdn.worldvectorlogo.com/logos/emirates-airlines.svg' },
     { name: 'Qatar Airways', logo: 'https://cdn.worldvectorlogo.com/logos/qatar-airways.svg' },
     { name: 'Marriott', logo: 'https://cdn.worldvectorlogo.com/logos/marriott.svg' },
-    { name: 'Taj Hotels', logo: 'https://cdn.worldvectorlogo.com/logos/taj-hotels-resorts-and-palaces.svg' },
-    { name: 'Hilton', logo: 'https://cdn.worldvectorlogo.com/logos/hilton-hotels-1.svg' },
-    { name: 'Four Seasons', logo: 'https://upload.wikimedia.org/wikipedia/en/5/5b/Four_Seasons_Hotels_and_Resorts_logo.svg' },
+    { name: 'Taj Hotels', logo: 'https://upload.wikimedia.org/wikipedia/commons/6/6a/Taj_Hotels_Logo.svg' },
+    { name: 'Hilton', logo: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Hilton_Hotels_%26_Resorts_logo.svg' },
+    { name: 'Four Seasons', logo: 'https://upload.wikimedia.org/wikipedia/commons/5/5b/Four_Seasons_Hotels_and_Resorts_logo.svg' },
     { name: 'ITC Hotels', logo: 'https://cdn.worldvectorlogo.com/logos/itc-limited.svg' },
   ];
 
