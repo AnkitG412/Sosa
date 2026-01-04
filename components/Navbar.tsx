@@ -53,8 +53,8 @@ const Navbar: React.FC = () => {
             <a href="tel:+918986892922" className="flex items-center hover:text-white transition-colors">
               <Phone size={12} className="mr-2" /> <span className="hidden md:inline">+91 89868 92922</span><span className="md:hidden">Call Us</span>
             </a>
-            <a href="mailto:concierge@sosatravelz.com" className="flex items-center hover:text-white transition-colors">
-              <Mail size={12} className="mr-2" /> <span className="hidden md:inline">concierge@sosatravelz.com</span><span className="md:hidden">Email</span>
+            <a href="mailto:hello.sosa777@gmail.com" className="flex items-center hover:text-white transition-colors">
+              <Mail size={12} className="mr-2" /> <span className="hidden md:inline">hello.sosa777@gmail.com</span><span className="md:hidden">Email</span>
             </a>
           </div>
         </div>

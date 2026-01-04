@@ -1,10 +1,23 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { Mail, MapPin, Phone, Check } from 'lucide-react';
 import Logo from './Logo';
 
 const Footer: React.FC = () => {
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    const email = "hello.sosa777@gmail.com";
+    navigator.clipboard.writeText(email).then(() => {
+      setEmailCopied(true);
+      setTimeout(() => setEmailCopied(false), 2000);
+    });
+  };
+
+  const addressQuery = encodeURIComponent("Kanke road, Lake Avenue, Lane No – 3, near Iskcon, Jharkhand, 834008 India");
+  const mapUrl = `https://www.google.com/maps/search/?api=1&query=${addressQuery}`;
+
   return (
     <footer className="bg-primary-900 text-white pt-16 pb-8">
       <div className="container mx-auto px-6">
@@ -48,17 +61,46 @@ const Footer: React.FC = () => {
             <div>
               <h3 className="text-lg font-bold uppercase tracking-widest mb-6 border-b border-gray-700 pb-2 inline-block">Contact</h3>
               <ul className="space-y-4">
-                <li className="flex items-start space-x-3 text-gray-400">
-                  <MapPin className="text-gold-500 mt-1 flex-shrink-0" size={18} />
-                  <span>Kanke road, Lake Avenue, Lane No – 3, near Iskcon, Jharkhand, 834008 India</span>
+                {/* Address - Opens Map */}
+                <li>
+                  <a 
+                    href={mapUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="flex items-start space-x-3 text-gray-400 hover:text-gold-500 transition-colors group"
+                  >
+                    <MapPin className="text-gold-500 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform" size={18} />
+                    <span>Kanke road, Lake Avenue, Lane No – 3, near Iskcon, Jharkhand, 834008 India</span>
+                  </a>
                 </li>
-                <li className="flex items-center space-x-3 text-gray-400">
-                  <Phone className="text-gold-500 flex-shrink-0" size={18} />
-                  <span>+91 89868 92922</span>
+
+                {/* Phone - Direct Call */}
+                <li>
+                  <a 
+                    href="tel:+918986892922" 
+                    className="flex items-center space-x-3 text-gray-400 hover:text-gold-500 transition-colors group"
+                  >
+                    <Phone className="text-gold-500 flex-shrink-0 group-hover:scale-110 transition-transform" size={18} />
+                    <span>+91 89868 92922</span>
+                  </a>
                 </li>
-                <li className="flex items-center space-x-3 text-gray-400">
-                  <Mail className="text-gold-500 flex-shrink-0" size={18} />
-                  <span>concierge@sosatravelz.com</span>
+
+                {/* Email - Copy to Clipboard */}
+                <li>
+                  <button 
+                    onClick={handleCopyEmail}
+                    className="flex items-center space-x-3 text-gray-400 hover:text-gold-500 transition-colors text-left w-full group"
+                    title="Click to copy email"
+                  >
+                    {emailCopied ? (
+                      <Check className="text-green-500 flex-shrink-0 scale-110 transition-transform" size={18} />
+                    ) : (
+                      <Mail className="text-gold-500 flex-shrink-0 group-hover:scale-110 transition-transform" size={18} />
+                    )}
+                    <span className={emailCopied ? "text-green-500 font-bold" : ""}>
+                      {emailCopied ? "Copied to clipboard!" : "hello.sosa777@gmail.com"}
+                    </span>
+                  </button>
                 </li>
               </ul>
             </div>

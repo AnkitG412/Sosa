@@ -38,7 +38,7 @@ const Contact: React.FC = () => {
                    <Mail className="text-gold-500" />
                    <div>
                       <p className="font-bold text-primary-900 text-sm uppercase">Email</p>
-                      <p className="text-gray-600 text-sm">ankitroy379@gmail.com</p>
+                      <p className="text-gray-600 text-sm">hello.sosa777@gmail.com</p>
                    </div>
                 </div>
              </div>

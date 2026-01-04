@@ -3,17 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { COUNTRY_CODES, DESTINATIONS } from '../constants';
 import { ChevronDown, CheckCircle, Loader2 } from 'lucide-react';
 
-// ==========================================
-// FORM CONFIGURATION
-// ==========================================
-// To save data to Google Sheets:
-// 1. Open your Google Sheet > Extensions > Apps Script.
-// 2. Paste the script, Deploy as Web App (Execute as: Me, Who has access: Anyone).
-// 3. Paste the generated "Web App URL" (starts with https://script.google.com/...) below.
-//
-// If this URL is empty, the form will simulate a success message for demonstration purposes.
-const GOOGLE_SCRIPT_URL: string = ""; 
-
 interface EnquiryFormProps {
   compact?: boolean;
   initialDestination?: string;
@@ -31,6 +20,7 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({ compact = false, initialDesti
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   useEffect(() => {
     if (initialDestination) {
@@ -45,35 +35,44 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({ compact = false, initialDesti
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError('');
+
+    // ************************************************************************
+    // Current Form ID: xkogvloe
+    // ************************************************************************
+    const FORMSPREE_ID = 'xkogvloe'; 
 
     try {
-        // Check if a valid Google Script URL is configured
-        if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL.includes("script.google.com")) {
-            // Create FormData to send to Google Script
-            const formBody = new FormData();
-            formBody.append('Name', formData.name);
-            formBody.append('Email', formData.email);
-            formBody.append('Phone', `${formData.countryCode} ${formData.phone}`);
-            formBody.append('Destination', formData.destination);
-            formBody.append('Message', formData.message);
+        const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                name: formData.name,
+                email: formData.email,
+                phone: `${formData.countryCode} ${formData.phone}`,
+                destination: formData.destination,
+                message: formData.message,
+                // Optimized Subject line for Mobile Email Notifications
+                _subject: `New Trip Enquiry: ${formData.name} for ${formData.destination || 'Custom Trip'}`
+            })
+        });
 
-            await fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                body: formBody,
-                mode: 'no-cors' // Important for Google Apps Script to avoid CORS errors
-            });
+        if (response.ok) {
+            setIsSubmitted(true);
         } else {
-            // Simulation Mode: Just wait a bit and show success
-            // This ensures the form UI works even without the backend connection
-            console.log("Simulating submission (Backend not configured)");
-            await new Promise(resolve => setTimeout(resolve, 1500));
+            const data = await response.json();
+            if (data.errors) {
+                setSubmitError(data.errors.map((err: any) => err.message).join(', '));
+            } else {
+                setSubmitError('There was a problem submitting your form');
+            }
         }
-
-        setIsSubmitted(true);
     } catch (error) {
         console.error("Submission Error:", error);
-        // Fallback simulation for network errors so the user doesn't feel stuck
-        setIsSubmitted(true);
+        setSubmitError('Unable to send enquiry. Please try again later.');
     } finally {
         setIsSubmitting(false);
     }
@@ -95,14 +94,14 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({ compact = false, initialDesti
             <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mb-6">
                <CheckCircle className="text-green-600" size={32} />
             </div>
-            <h3 className="text-2xl font-serif font-bold text-primary-900 mb-4">Enquiry Received</h3>
-            <p className="text-gray-600 mb-8 max-w-sm mx-auto leading-relaxed">
-               Thank you, <span className="font-bold">{formData.name}</span>. Our travel concierge has received your request and will contact you shortly.
+            <h3 className="text-2xl font-serif font-bold text-primary-900 mb-2">Enquiry Sent Successfully</h3>
+            <p className="text-gray-600 mb-8 max-w-sm mx-auto leading-relaxed text-sm">
+               Thank you, <span className="font-bold">{formData.name}</span>. We have received your details via email.
             </p>
             
             <div className="bg-cream border border-gold-500/30 p-6 rounded-[12px] w-full max-w-sm">
                <p className="text-xs font-bold text-primary-900 uppercase tracking-widest mb-2">Expected Response Time</p>
-               <p className="text-primary-900 font-inter text-lg">You will receive a call within <br/> 2–4 working hours</p>
+               <p className="text-primary-900 font-inter text-lg">You will receive a response within <br/> 2–4 working hours</p>
             </div>
 
             <button 
@@ -226,6 +225,12 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({ compact = false, initialDesti
           </div>
         )}
       </div>
+
+      {submitError && (
+          <div className="mt-6 text-red-500 text-xs text-center bg-red-50 p-2 rounded">
+              {submitError}
+          </div>
+      )}
 
       <button
         type="submit"
