@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { UserCheck, Car, CreditCard, FileText, Shield, Map, Sliders, Plane, ArrowRight } from 'lucide-react';
-import { DESTINATIONS } from '../constants';
+import { DESTINATIONS, SITE_IMAGES } from '../constants';
 
 const About: React.FC = () => {
   const features = [
@@ -25,7 +25,7 @@ const About: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24 items-center">
            <div className="relative h-full min-h-[500px]">
-               <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=800&auto=format&fit=crop" alt="The Journey" className="w-full h-full object-cover rounded-[12px] shadow-xl" />
+               <img src={SITE_IMAGES.about.hero} alt="The Journey" className="w-full h-full object-cover rounded-[12px] shadow-xl" />
            </div>
            
            <div className="flex flex-col justify-center space-y-10">

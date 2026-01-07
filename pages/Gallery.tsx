@@ -1,17 +1,9 @@
 
 import React from 'react';
+import { SITE_IMAGES } from '../constants';
 
 const Gallery: React.FC = () => {
-  const images = [
-    'https://picsum.photos/seed/gal1/800/800',
-    'https://picsum.photos/seed/gal2/800/600',
-    'https://picsum.photos/seed/gal3/800/800',
-    'https://picsum.photos/seed/gal4/600/800',
-    'https://picsum.photos/seed/gal5/800/600',
-    'https://picsum.photos/seed/gal6/800/800',
-    'https://picsum.photos/seed/gal7/600/800',
-    'https://picsum.photos/seed/gal8/800/600',
-  ];
+  const images = SITE_IMAGES.gallery;
 
   return (
     <div className="min-h-screen pt-20">

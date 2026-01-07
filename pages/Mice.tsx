@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Clock, FileText, Handshake, ShieldCheck, ArrowRight, UserCheck, Car, CreditCard, Shield, Share2 } from 'lucide-react';
-import { DESTINATIONS } from '../constants';
+import { DESTINATIONS, SITE_IMAGES } from '../constants';
 
 const Mice: React.FC = () => {
   // Select specific destinations suitable for Corporate MICE
@@ -44,7 +44,7 @@ const Mice: React.FC = () => {
 
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
-           <img src="https://picsum.photos/seed/meeting/800/600" className="w-full h-[400px] object-cover shadow-xl rounded-[12px]" alt="Conference" />
+           <img src={SITE_IMAGES.mice.hero} className="w-full h-[400px] object-cover shadow-xl rounded-[12px]" alt="Conference" />
            <div className="flex flex-col justify-center">
               <h2 className="text-3xl font-serif font-bold text-primary-900 mb-6">Elevate Corporate Travel</h2>
               <p className="text-gray-600 mb-6 leading-relaxed">

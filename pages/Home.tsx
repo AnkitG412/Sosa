@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { DESTINATIONS, TESTIMONIALS } from '../constants';
+import { DESTINATIONS, TESTIMONIALS, SITE_IMAGES } from '../constants';
 import { ArrowRight, Star, Briefcase, MapPin, Sparkles, ChevronLeft, ChevronRight, ChevronDown, Clock, Share2, Plane } from 'lucide-react';
 import EnquiryForm from '../components/EnquiryForm';
 
@@ -378,7 +378,7 @@ const Home: React.FC = () => {
             <div className="flex flex-col lg:flex-row items-center gap-16">
                 <div className="lg:w-1/2 relative">
                     <img 
-                        src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=800&auto=format&fit=crop" 
+                        src={SITE_IMAGES.home.about} 
                         alt="Luxury Travel Experience" 
                         className="w-full h-[500px] object-cover rounded-[12px] shadow-2xl relative z-10"
                     />

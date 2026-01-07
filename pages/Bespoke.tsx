@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Compass, Calendar, UserCheck, Shield, ArrowRight, Share2 } from 'lucide-react';
-import { DESTINATIONS } from '../constants';
+import { DESTINATIONS, SITE_IMAGES } from '../constants';
 
 const Bespoke: React.FC = () => {
   const handleShare = (e: React.MouseEvent, dest: typeof DESTINATIONS[0]) => {
@@ -27,7 +27,7 @@ const Bespoke: React.FC = () => {
     <div className="min-h-screen pt-20">
       {/* Header */}
       <div className="relative h-[60vh] flex items-center justify-center">
-        <img src="https://picsum.photos/seed/bespoke/1920/1080" className="absolute inset-0 w-full h-full object-cover" alt="Bespoke" />
+        <img src={SITE_IMAGES.bespoke.hero} className="absolute inset-0 w-full h-full object-cover" alt="Bespoke" />
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 text-center text-white px-6">
           <span className="text-gold-400 uppercase tracking-[0.3em] text-sm font-bold mb-4 block">Tailored For You</span>
@@ -92,8 +92,8 @@ const Bespoke: React.FC = () => {
           </div>
           
           <div className="grid grid-cols-2 gap-4">
-             <img src="https://picsum.photos/seed/travel2/600/800" className="w-full h-full object-cover rounded-[12px] shadow-lg mt-12" alt="Details" />
-             <img src="https://picsum.photos/seed/travel3/600/800" className="w-full h-full object-cover rounded-[12px] shadow-lg" alt="Details" />
+             <img src={SITE_IMAGES.bespoke.process1} className="w-full h-full object-cover rounded-[12px] shadow-lg mt-12" alt="Details" />
+             <img src={SITE_IMAGES.bespoke.process2} className="w-full h-full object-cover rounded-[12px] shadow-lg" alt="Details" />
           </div>
         </div>
       </div>

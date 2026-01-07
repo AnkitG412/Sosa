@@ -9,6 +9,37 @@ const getGallery = (baseImages: string[], keyword: string, count: number = 10) =
   return [...baseImages, ...extraImages];
 };
 
+export const SITE_IMAGES = {
+  home: {
+    about: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=800&auto=format&fit=crop',
+  },
+  bespoke: {
+    hero: 'https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1920&auto=format&fit=crop',
+    process1: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=800&auto=format&fit=crop',
+    process2: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=800&auto=format&fit=crop',
+  },
+  mice: {
+    hero: 'https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1920&auto=format&fit=crop',
+  },
+  divyaPath: {
+    hero: 'https://images.unsplash.com/photo-1604537529428-15bcbeecfe4d?q=80&w=1920&auto=format&fit=crop',
+  },
+  about: {
+    hero: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=800&auto=format&fit=crop',
+  },
+  gallery: [
+    'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800',
+    'https://images.unsplash.com/photo-1469474932222-8d80f1dd194c?q=80&w=800',
+    'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=800',
+    'https://images.unsplash.com/photo-1499063078284-f78f7d89616a?q=80&w=800',
+    'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=800',
+    'https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=800',
+    'https://images.unsplash.com/photo-1494783367193-149034c05e8f?q=80&w=800',
+    'https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?q=80&w=800',
+    'https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=800',
+  ]
+};
+
 export const COUNTRY_CODES: CountryCode[] = [
   { code: 'US', name: 'United States', dial_code: '+1' },
   { code: 'GB', name: 'United Kingdom', dial_code: '+44' },
@@ -76,9 +107,9 @@ export const DESTINATIONS: Destination[] = [
     longDescription: 'Bali is more than a destination; it is a mood, an aspiration, and a tropical state of mind. Beyond the beaches lies a rich cultural heart in Ubud, where art, spirituality, and nature converge. Our bespoke itinerary takes you from the sacred water temples to the cliffside luxury of Uluwatu. Experience a private purification ceremony with a high priest and witness the Kecak fire dance against a sunset backdrop.',
     highlights: ['Sunrise trek to Mount Batur', 'Private purification ceremony', 'Ubud art village tour', 'Luxury cliffside dining in Uluwatu'],
     gallery: getGallery([
-      'https://images.unsplash.com/photo-1559628233-eb1b1ee29aa3?q=80&w=800&auto=format&fit=crop', 
+      'https://images.unsplash.com/photo-1555400038-63f5ba517a47?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
       'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?q=80&w=800&auto=format&fit=crop', 
-      'https://images.unsplash.com/photo-1537953773345-d1727908c0f3?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1585302397841-b42e837d0d81?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       'https://images.unsplash.com/photo-1558005530-a7958896ec60?q=80&w=800&auto=format&fit=crop',
     ], 'bali,ubud,resort'),
     bestTime: 'April to October',
@@ -191,7 +222,7 @@ export const DESTINATIONS: Destination[] = [
     name: 'Santorini',
     location: 'Greece',
     description: 'Iconic white-washed buildings, blue domes, and breathtaking sunsets over the Aegean.',
-    imageUrl: 'https://images.unsplash.com/photo-1613395877344-13d4c79e42d0?q=80&w=1920&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1580502304784-8985b7eb7260?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     priceStart: '$3,500',
     duration: '4 Nights / 5 Days',
     tag: 'Romantic',
@@ -307,7 +338,7 @@ export const DESTINATIONS: Destination[] = [
     name: 'Paris',
     location: 'France',
     description: 'The city of lights, love, art, and fashion. A timeless European classic.',
-    imageUrl: 'https://images.unsplash.com/photo-1499856871940-b09fe758151b?q=80&w=1920&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     priceStart: '$3,200',
     duration: '5 Nights / 6 Days',
     longDescription: 'Paris is an emotion. We invite you to see the French capital through the eyes of a local connoisseur. Skip the lines at the Louvre with a private art historian, enjoy a dinner cruise on the Seine, and shop with a personal stylist in Le Marais. Stay in a palace hotel with views of the Eiffel Tower and experience the epitome of romance and sophistication.',
@@ -384,7 +415,7 @@ export const DESTINATIONS: Destination[] = [
     name: 'Amalfi Coast',
     location: 'Italy',
     description: 'Dramatic cliffs, pastel villages, and the sparkling Tyrrhenian Sea.',
-    imageUrl: 'https://images.unsplash.com/photo-1633321088355-d0f8c1eaad4b?q=80&w=1920&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1609186796344-b9222f036f84?q=80&w=1073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     priceStart: '$4,200',
     duration: '6 Nights / 7 Days',
     tag: 'Romantic',
@@ -424,7 +455,7 @@ export const DESTINATIONS: Destination[] = [
     name: 'Bora Bora',
     location: 'French Polynesia',
     description: 'A romantic atoll surrounded by a turquoise lagoon and barrier reef.',
-    imageUrl: 'https://images.unsplash.com/photo-1580719500552-e95261e6bd95?q=80&w=1920&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1676405328043-85738f8473ba?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     priceStart: '$5,500',
     duration: '6 Nights / 7 Days',
     tag: 'Honeymoon',
@@ -733,7 +764,7 @@ export const PILGRIMAGE_SITES: Destination[] = [
     name: 'Rishikesh',
     location: 'Uttarakhand, India',
     description: 'The Yoga Capital of the World, by the holy banks of the Ganges.',
-    imageUrl: 'https://images.unsplash.com/photo-1589216631166-511475751264?q=80&w=800&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1729922141827-ba9163bfb884?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     duration: '5 Nights / 6 Days'
   },
   {
@@ -741,7 +772,7 @@ export const PILGRIMAGE_SITES: Destination[] = [
     name: 'Golden Temple',
     location: 'Punjab, India',
     description: 'Amritsar’s spiritual sanctuary representing human brotherhood and equality.',
-    imageUrl: 'https://images.unsplash.com/photo-1628867375685-c052825d5763?q=80&w=800&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1583821017783-4333717df070?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     duration: '3 Nights / 4 Days'
   },
   {
@@ -749,7 +780,7 @@ export const PILGRIMAGE_SITES: Destination[] = [
     name: 'Tirupati',
     location: 'Andhra Pradesh, India',
     description: 'The sacred abode of Lord Venkateswara nestled in the Seshachalam Hills.',
-    imageUrl: 'https://images.unsplash.com/photo-1589136777351-943288137361?q=80&w=800&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1733805569204-41768c7d8c0f?q=80&w=1227&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     duration: '2 Nights / 3 Days'
   },
   {
@@ -757,7 +788,7 @@ export const PILGRIMAGE_SITES: Destination[] = [
     name: 'Himalayan Temples',
     location: 'Uttarakhand, India',
     description: 'Ancient shrines of Kedarnath and Badrinath amidst majestic snowy peaks.',
-    imageUrl: 'https://images.unsplash.com/photo-1598322636066-6f77f53a9856?q=80&w=800&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1612438214708-f428a707dd4e?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     duration: '9 Nights / 10 Days'
   },
   {
@@ -765,7 +796,7 @@ export const PILGRIMAGE_SITES: Destination[] = [
     name: 'Varanasi',
     location: 'Uttar Pradesh, India',
     description: 'The spiritual capital of India, where life and death meet on the ghats of the Ganges.',
-    imageUrl: 'https://images.unsplash.com/photo-1561361513-2d000a50f0dc?q=80&w=800&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1605601528543-75ba6928c19d?q=80&w=1167&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     duration: '3 Nights / 4 Days'
   },
   {
@@ -773,7 +804,7 @@ export const PILGRIMAGE_SITES: Destination[] = [
     name: 'Bodh Gaya',
     location: 'Bihar, India',
     description: 'The most holy place for Buddhists, where Prince Siddhartha attained Enlightenment.',
-    imageUrl: 'https://images.unsplash.com/photo-1565035010268-a3816f98589a?q=80&w=800&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1622194993926-1801586d460f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     duration: '2 Nights / 3 Days'
   },
   {
@@ -781,7 +812,7 @@ export const PILGRIMAGE_SITES: Destination[] = [
     name: 'Vaishno Devi',
     location: 'Jammu & Kashmir, India',
     description: 'A holy cave shrine dedicated to Goddess Durga, nestled in the Trikuta Mountains.',
-    imageUrl: 'https://images.unsplash.com/photo-1605626359556-9d3329971946?q=80&w=800&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1719377678428-d9bcec6976f3?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     duration: '3 Nights / 4 Days'
   },
   {
@@ -789,7 +820,7 @@ export const PILGRIMAGE_SITES: Destination[] = [
     name: 'Rameswaram',
     location: 'Tamil Nadu, India',
     description: 'A pilgrimage center on Pamban Island, known for its ornate corridors and sacred wells.',
-    imageUrl: 'https://images.unsplash.com/photo-1582510003544-79c1b11ec982?q=80&w=800&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1706932642959-97cdde19ef0b?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     duration: '3 Nights / 4 Days'
   }
 ];

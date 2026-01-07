@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { PILGRIMAGE_SITES } from '../constants';
+import { PILGRIMAGE_SITES, SITE_IMAGES } from '../constants';
 import { Link } from 'react-router-dom';
 
 const DivyaPath: React.FC = () => {
@@ -9,7 +9,7 @@ const DivyaPath: React.FC = () => {
       {/* Hero */}
       <div className="relative h-[50vh] bg-amber-50 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-            <img src="https://picsum.photos/seed/temple/1920/600" alt="Spiritual" className="w-full h-full object-cover opacity-30" />
+            <img src={SITE_IMAGES.divyaPath.hero} alt="Spiritual" className="w-full h-full object-cover opacity-30" />
         </div>
         <div className="relative z-10 text-center px-6">
           <span className="text-amber-600 font-serif italic text-2xl mb-2 block">Divya Path</span>
