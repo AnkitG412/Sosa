@@ -31,8 +31,6 @@ const Destinations: React.FC = () => {
         <p className="text-gray-600 max-w-2xl mx-auto">Explore the world's most breathtaking locations, curated for the ultimate luxury experience.</p>
       </div>
 
-      <InteractiveMap />
-
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {DESTINATIONS.map((dest) => (
@@ -67,6 +65,8 @@ const Destinations: React.FC = () => {
           ))}
         </div>
       </div>
+
+      <InteractiveMap />
     </div>
   );
 };

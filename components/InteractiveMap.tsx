@@ -28,15 +28,17 @@ const InteractiveMap: React.FC = () => {
         libraries: ["places"]
         });
 
-        loader.importLibrary("maps").then(async ({ Map }) => {
-        const { Marker } = await loader.importLibrary("marker") as any;
+        (loader as any).importLibrary("maps").then(async ({ Map }: any) => {
+        const { Marker } = await (loader as any).importLibrary("marker") as any;
 
         const map = new Map(mapRef.current!, {
             center: { lat: 20, lng: 70 },
             zoom: 3,
             mapTypeId: 'roadmap',
             disableDefaultUI: false,
-            zoomControl: true,
+            zoomControl: false, // Disabled zoom buttons
+            scrollwheel: false, // Disabled scroll zoom
+            disableDoubleClickZoom: true, // Disabled double click zoom
             streetViewControl: false,
             mapTypeControl: false,
             fullscreenControl: true,
@@ -158,7 +160,7 @@ const InteractiveMap: React.FC = () => {
             });
             }
         });
-        }).catch((e) => {
+        }).catch((e: any) => {
         console.error("Google Maps failed to load", e);
         setMapError(true);
         });
@@ -169,7 +171,14 @@ const InteractiveMap: React.FC = () => {
         // Prevent re-initialization
         if ((mapRef.current as any)._leaflet_id) return;
 
-        const map = L.map(mapRef.current!).setView([20, 70], 3);
+        // Initialize Leaflet map with zoomControl disabled
+        const map = L.map(mapRef.current!, { 
+            zoomControl: false,
+            scrollWheelZoom: false,
+            doubleClickZoom: false,
+            touchZoom: false,
+            boxZoom: false
+        }).setView([20, 70], 3);
 
         // Light/Cream colored map style (CartoDB Positron)
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
@@ -239,3 +248,4 @@ const InteractiveMap: React.FC = () => {
 };
 
 export default InteractiveMap;
+    

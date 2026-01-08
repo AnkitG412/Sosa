@@ -91,9 +91,12 @@ const Bespoke: React.FC = () => {
             </div>
           </div>
           
-          <div className="grid grid-cols-2 gap-4">
-             <img src={SITE_IMAGES.bespoke.process1} className="w-full h-full object-cover rounded-[12px] shadow-lg mt-12" alt="Details" />
-             <img src={SITE_IMAGES.bespoke.process2} className="w-full h-full object-cover rounded-[12px] shadow-lg" alt="Details" />
+          <div className="relative h-full min-h-[500px]">
+             <img 
+               src="https://images.unsplash.com/photo-1582880421648-a7154a8c99c1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+               className="w-full h-full object-cover rounded-[12px] shadow-2xl" 
+               alt="Tailored Experience in Bali" 
+             />
           </div>
         </div>
       </div>

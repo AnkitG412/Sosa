@@ -79,17 +79,17 @@ const Home: React.FC = () => {
     setCurrentSlide((prev) => (prev === heroDestinations.length - 1 ? 0 : prev + 1));
   };
 
-  const prevSlide = () => {
+  const prevSlideAction = () => {
     setCurrentSlide((prev) => (prev === 0 ? heroDestinations.length - 1 : prev - 1));
   };
 
   // Auto-play
   useEffect(() => {
     const timer = setInterval(() => {
-      nextSlide();
+      setCurrentSlide((prev) => (prev === heroDestinations.length - 1 ? 0 : prev + 1));
     }, 6000);
     return () => clearInterval(timer);
-  }, [currentSlide]);
+  }, []);
 
   const handleShare = (e: React.MouseEvent, dest: typeof DESTINATIONS[0]) => {
     e.preventDefault();
@@ -188,88 +188,74 @@ const Home: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Carousel Section */}
-      <section className="relative h-screen min-h-[700px] flex items-center overflow-hidden">
+      <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden bg-primary-900">
         
-        {/* Background Images Layer */}
+        {/* Images Layer */}
         {heroDestinations.map((dest, index) => (
-          <div 
-            key={dest.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-              index === currentSlide ? 'opacity-100 z-0' : 'opacity-0 -z-10'
-            }`}
-          >
-            <img 
-              src={dest.imageUrl} 
-              alt={dest.name} 
-              className="w-full h-full object-cover"
-            />
-            {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-black/40"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
-          </div>
+            <div 
+                key={dest.id}
+                className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
+                    index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                }`}
+            >
+                {/* Image with Ken Burns effect when active */}
+                <img 
+                    src={dest.imageUrl} 
+                    alt={dest.name} 
+                    className={`w-full h-full object-cover transition-transform duration-[6000ms] ease-out ${index === currentSlide ? 'scale-110' : 'scale-100'}`} 
+                />
+                <div className="absolute inset-0 bg-black/40"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            </div>
         ))}
 
-        {/* Navigation Arrows - Desktop Only */}
+        {/* Navigation Arrows */}
         <button 
-          onClick={prevSlide}
-          className="hidden md:block absolute left-8 z-20 text-white/50 hover:text-white hover:scale-110 transition-all p-2 rounded-full border border-white/20 hover:border-white/80 bg-black/10 backdrop-blur-sm"
+          onClick={prevSlideAction}
+          className="hidden md:block absolute left-8 z-30 text-white/50 hover:text-white hover:scale-110 transition-all p-3 rounded-full border border-white/20 hover:border-white/80 bg-black/10 backdrop-blur-sm"
         >
           <ChevronLeft size={32} />
         </button>
         <button 
           onClick={nextSlide}
-          className="hidden md:block absolute right-8 z-20 text-white/50 hover:text-white hover:scale-110 transition-all p-2 rounded-full border border-white/20 hover:border-white/80 bg-black/10 backdrop-blur-sm"
+          className="hidden md:block absolute right-8 z-30 text-white/50 hover:text-white hover:scale-110 transition-all p-3 rounded-full border border-white/20 hover:border-white/80 bg-black/10 backdrop-blur-sm"
         >
           <ChevronRight size={32} />
         </button>
 
         {/* Content Layer */}
-        <div className="container mx-auto px-6 relative z-10 h-full flex flex-col justify-center items-center text-center pt-12">
-          
-          {/* Text Content */}
-          <div className="text-white space-y-8 max-w-5xl mx-auto">
-            {/* Dynamic Content */}
+        <div className="container mx-auto px-6 relative z-20 h-full">
             {heroDestinations.map((dest, index) => (
-                index === currentSlide && (
-                    <div key={dest.id} className="flex flex-col items-center">
-                        {/* Title Mask */}
-                        <div className="overflow-hidden pb-4">
-                            <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif font-bold leading-tight mb-0 drop-shadow-2xl animate-reveal-up">
-                                {dest.name}
-                            </h1>
-                        </div>
-                        {/* Description Mask */}
-                        <div className="overflow-hidden pt-2 px-4 max-w-3xl">
-                            <p className="text-xl md:text-2xl text-gray-100 leading-relaxed drop-shadow-md font-serif italic animate-reveal-up" style={{ animationDelay: '0.15s', animationFillMode: 'both' }}>
-                                "{dest.description}"
-                            </p>
-                        </div>
+                <div 
+                    key={`content-${dest.id}`}
+                    className={`absolute inset-0 flex flex-col justify-center items-center text-center transition-all duration-1000 ${
+                        index === currentSlide 
+                        ? 'opacity-100 translate-y-0 pointer-events-auto' 
+                        : 'opacity-0 translate-y-8 pointer-events-none'
+                    }`}
+                >
+                    <div className="max-w-4xl mx-auto px-4 pt-20">
+                        <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif font-bold leading-tight mb-4 drop-shadow-2xl text-white">
+                            {dest.name}
+                        </h1>
+                        <p className="text-xl md:text-2xl text-gray-100 leading-relaxed drop-shadow-md font-serif italic mb-8">
+                            "{dest.description}"
+                        </p>
+                        <Link 
+                            to={`/destinations/${dest.id}`} 
+                            className="inline-flex justify-center items-center gap-2 bg-gold-500 text-white px-10 py-4 text-sm uppercase tracking-widest hover:bg-gold-600 transition-all duration-300 font-bold shadow-xl hover:-translate-y-1 rounded-[6px]"
+                        >
+                            Plan my Journey 
+                            <ArrowRight size={18} />
+                        </Link>
                     </div>
-                )
+                </div>
             ))}
-            
-            <div className="pt-8 flex flex-col md:flex-row justify-center gap-6 animate-fade-in-up">
-              <Link to={`/destinations/${heroDestinations[currentSlide].id}`} className="group inline-flex justify-center items-center gap-2 bg-gold-500 text-white px-10 py-4 text-sm uppercase tracking-widest hover:bg-gold-600 transition-all duration-300 font-bold shadow-xl hover:-translate-y-1 rounded-[6px]">
-                Plan my Journey 
-                <ArrowRight size={18} className="group-hover:hidden" />
-                <Plane size={18} className="hidden group-hover:block" />
-              </Link>
-            </div>
-          </div>
         </div>
 
-        {/* Bottom Navigation Container */}
-        <div className="absolute bottom-10 left-0 w-full flex justify-center items-center gap-4 z-20 px-4">
-            {/* Mobile Prev Button */}
-            <button 
-                onClick={prevSlide}
-                className="md:hidden text-white/70 hover:text-gold-500 p-2 transition-colors"
-                aria-label="Previous Slide"
-            >
-                <ChevronLeft size={24} />
-            </button>
-
-            {/* Dots Indicators */}
+        {/* Bottom Navigation Indicators */}
+        <div className="absolute bottom-10 left-0 w-full flex justify-center items-center gap-4 z-30">
+            <button onClick={prevSlideAction} className="md:hidden text-white/70 p-2"><ChevronLeft size={24}/></button>
             <div className="flex gap-3">
                 {heroDestinations.map((_, index) => (
                     <button
@@ -282,15 +268,7 @@ const Home: React.FC = () => {
                     />
                 ))}
             </div>
-
-            {/* Mobile Next Button */}
-            <button 
-                onClick={nextSlide}
-                className="md:hidden text-white/70 hover:text-gold-500 p-2 transition-colors"
-                aria-label="Next Slide"
-            >
-                <ChevronRight size={24} />
-            </button>
+            <button onClick={nextSlide} className="md:hidden text-white/70 p-2"><ChevronRight size={24}/></button>
         </div>
       </section>
 
