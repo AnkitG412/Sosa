@@ -343,7 +343,7 @@ const Home: React.FC = () => {
             ))}
           </div>
           <div className="text-center mt-12">
-            <Link to="/destinations" className="bg-primary-900 text-white px-8 py-3 uppercase tracking-widest text-sm hover:bg-primary-900 hover:text-white transition-colors rounded-[6px]">
+            <Link to="/destinations" className="inline-block bg-primary-900 text-white px-14 py-5 uppercase tracking-widest text-base font-bold hover:bg-gold-500 hover:text-white transition-all duration-300 shadow-xl hover:shadow-2xl rounded-[8px] hover:-translate-y-1">
               View All Destinations
             </Link>
           </div>
