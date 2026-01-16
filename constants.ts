@@ -1,17 +1,9 @@
 
 import { Destination, Testimonial, BlogPost, CountryCode } from './types';
 
-// Helper to generate unique images for a destination to ensure variety and relevance
-const getGallery = (baseImages: string[], keyword: string, count: number = 10) => {
-  const extraImages = Array.from({ length: count }, (_, i) => 
-    `https://loremflickr.com/800/600/${keyword.replace(/\s+/g, ',')}?lock=${i + 100}`
-  );
-  return [...baseImages, ...extraImages];
-};
-
 export const SITE_IMAGES = {
   home: {
-    about: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=800&auto=format&fit=crop',
+    about: 'https://raw.githubusercontent.com/AnkitG412/Sosa/main/Public/my%20picture%20final.png',
   },
   bespoke: {
     hero: 'https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1920&auto=format&fit=crop',
@@ -64,13 +56,13 @@ export const DESTINATIONS: Destination[] = [
     tag: 'Popular',
     longDescription: 'Thailand is a tapestry of diversity, where ancient traditions blend seamlessly with modern luxury. From the bustling streets of Bangkok to the serene hills of Chiang Mai and the limestone karsts of Krabi, our curated journey invites you to explore the Land of Smiles in unparalleled comfort. Stay in private pool villas, enjoy exclusive after-hours temple tours, and dine on Michelin-starred street food.',
     highlights: ['Private yacht tour of Phang Nga Bay', 'Exclusive dinner at Wat Arun', 'Elephant sanctuary volunteer experience', 'Luxury spa retreat in Chiang Mai'],
-    gallery: getGallery([
+    gallery: [
       'https://images.unsplash.com/photo-1563492065599-3520f775eeed?q=80&w=800&auto=format&fit=crop', 
       'https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?q=80&w=800&auto=format&fit=crop', 
       'https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?q=80&w=800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1528181304800-259ac0c8d1b5?q=80&w=800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1559563458-52c69c8e8743?q=80&w=800&auto=format&fit=crop',
-    ], 'thailand,temple,beach'),
+    ],
     bestTime: 'November to early April',
     climate: 'Tropical, warm and humid year-round',
     timeZone: 'GMT+7',
@@ -106,12 +98,12 @@ export const DESTINATIONS: Destination[] = [
     duration: '6 Nights / 7 Days',
     longDescription: 'Bali is more than a destination; it is a mood, an aspiration, and a tropical state of mind. Beyond the beaches lies a rich cultural heart in Ubud, where art, spirituality, and nature converge. Our bespoke itinerary takes you from the sacred water temples to the cliffside luxury of Uluwatu. Experience a private purification ceremony with a high priest and witness the Kecak fire dance against a sunset backdrop.',
     highlights: ['Sunrise trek to Mount Batur', 'Private purification ceremony', 'Ubud art village tour', 'Luxury cliffside dining in Uluwatu'],
-    gallery: getGallery([
+    gallery: [
       'https://images.unsplash.com/photo-1555400038-63f5ba517a47?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
       'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?q=80&w=800&auto=format&fit=crop', 
       'https://images.unsplash.com/photo-1585302397841-b42e837d0d81?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       'https://images.unsplash.com/photo-1558005530-a7958896ec60?q=80&w=800&auto=format&fit=crop',
-    ], 'bali,ubud,resort'),
+    ],
     bestTime: 'April to October',
     climate: 'Tropical monsoon',
     timeZone: 'GMT+8',
@@ -147,11 +139,11 @@ export const DESTINATIONS: Destination[] = [
     tag: 'Nature',
     longDescription: 'Drift through the silent backwaters of Alleppey on a private ultra-luxury houseboat, waking up to the sounds of nature in God\'s Own Country. Kerala offers a slower pace of life, dedicated to wellness and nature. Visit the misty tea gardens of Munnar, indulge in authentic Ayurvedic treatments, and taste the spicy, coconut-rich cuisine that defines this coastal paradise.',
     highlights: ['Private luxury houseboat cruise', 'Authentic Ayurvedic rejuvenation therapy', 'Tea plantation heritage stay', 'Kathakali cultural performance'],
-    gallery: getGallery([
+    gallery: [
       'https://images.unsplash.com/photo-1593693397690-362cb9666fc2?q=80&w=800&auto=format&fit=crop', 
       'https://images.unsplash.com/photo-1574664620916-fb955a65cab3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
       'https://images.unsplash.com/photo-1546778316-dfda79f1c84e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    ], 'kerala,backwaters,india'),
+    ],
     bestTime: 'September to March',
     climate: 'Tropical, heavy monsoons in June-August',
     timeZone: 'GMT+5:30',
@@ -185,11 +177,11 @@ export const DESTINATIONS: Destination[] = [
     duration: '9 Nights / 10 Days',
     longDescription: 'Venture beyond the ordinary into the vast archipelago of Indonesia. Discover the prehistoric dragons of Komodo National Park or dive into the world’s most biodiverse marine habitats in Raja Ampat. This journey is for the explorer who refuses to compromise on luxury, offering private phinisi schooner charters and eco-resorts on uninhabited islands.',
     highlights: ['Komodo dragon private tour', 'Diving in Raja Ampat', 'Borobudur sunrise experience', 'Private Phinisi sailing charter'],
-    gallery: getGallery([
+    gallery: [
       'https://images.unsplash.com/photo-1580308388154-00cfffdb1dae?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
       'https://images.unsplash.com/photo-1600071560479-b4d6a8c28fea?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
       'https://images.unsplash.com/photo-1751778021206-e63ccdc28a71?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    ], 'komodo,indonesia,ocean'),
+    ],
     bestTime: 'May to September',
     climate: 'Tropical rainforest',
     timeZone: 'GMT+7',
@@ -228,11 +220,11 @@ export const DESTINATIONS: Destination[] = [
     tag: 'Romantic',
     longDescription: 'The jewel of the Aegean, Santorini creates a dramatic canvas of white Cycladic architecture against volcanic cliffs and the deep blue sea. Our exclusive package secures you the finest caldera-view suites in Oia. Enjoy private wine tastings in ancient vineyards, catamaran cruises to the Red Beach, and history walks through Akrotiri.',
     highlights: ['Sunset yacht cruise', 'Private wine tasting tour', 'Helicopter tour over the Caldera', 'Luxury cave suite accommodation'],
-    gallery: getGallery([
+    gallery: [
       'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?q=80&w=800&auto=format&fit=crop', 
       'https://images.unsplash.com/photo-1587242689479-cad77df96a4f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
       'https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=800&auto=format&fit=crop',
-    ], 'santorini,greece,aegean'),
+    ],
     bestTime: 'Late April to early November',
     climate: 'Mediterranean',
     timeZone: 'GMT+2',
@@ -240,10 +232,10 @@ export const DESTINATIONS: Destination[] = [
     language: 'Greek, English',
     idealFor: 'Romance, Sunsets, Luxury',
     visaPolicy: 'Schengen Visa rules apply.',
-    foodOption: 'Mediterranean. Fresh seafood & local wines.',
-    cultureEtiquette: 'Siesta time in afternoons. Tipping appreciated.',
-    safety: 'Very safe. Steep steps require caution.',
-    transportation: 'Walking (Oia/Fira), ATVs, Private Transfers.',
+    foodOption: 'Gastronomy capital. Bistros & Patisseries.',
+    cultureEtiquette: 'Greet with "Bonjour". Speak quietly.',
+    safety: 'Watch for pickpockets in tourist areas.',
+    transportation: 'Metro, RER, Taxis, Walking.',
     itinerary: [
       { day: 1, title: 'Arrival in Oia', description: 'Private helicopter transfer from Athens (optional) or VIP airport pick-up. Check into Canaves Oia. Sunset dinner.' },
       { day: 2, title: 'Sailing the Caldera', description: 'Private catamaran cruise. Visit the Hot Springs, Red Beach, and White Beach. BBQ lunch on board.' },
@@ -266,11 +258,11 @@ export const DESTINATIONS: Destination[] = [
     tag: 'Luxury',
     longDescription: 'Escape to a world where the ocean acts as your private playground. The Maldives defines barefoot luxury. We partner with the most exclusive private islands to offer you overwater villas with glass floors, underwater dining experiences, and personalized butler service. Perfect for honeymooners or anyone seeking absolute seclusion.',
     highlights: ['Private island picnic', 'Underwater restaurant dining', 'Sunset dolphin cruise', 'Overwater spa treatments'],
-    gallery: getGallery([
+    gallery: [
       'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=800&auto=format&fit=crop', 
       'https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?q=80&w=800&auto=format&fit=crop', 
       'https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?q=80&w=800&auto=format&fit=crop',
-    ], 'maldives,resort,underwater'),
+    ],
     bestTime: 'November to April',
     climate: 'Tropical',
     timeZone: 'GMT+5',
@@ -304,11 +296,11 @@ export const DESTINATIONS: Destination[] = [
     duration: '6 Nights / 7 Days',
     longDescription: 'Breath in the crisp alpine air of Switzerland. Whether you prefer the glitz of St. Moritz in winter or the blooming meadows of Interlaken in summer, the Swiss Alps offer grandeur on a massive scale. Travel via the Glacier Express in excellence class, stay in historic grand hotels, and indulge in private chocolate and cheese tasting workshops.',
     highlights: ['Glacier Express Excellence Class', 'Private ski instructor in Zermatt', 'Lake Geneva luxury cruise', 'Chocolate making workshop'],
-    gallery: getGallery([
+    gallery: [
       'https://images.unsplash.com/photo-1552353617-3bfd679b3bdd?q=80&w=800&auto=format&fit=crop', 
       'https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=800&auto=format&fit=crop', 
       'https://images.unsplash.com/photo-1483058712412-4245e9b90334?q=80&w=800&auto=format&fit=crop',
-    ], 'switzerland,alps,mountain'),
+    ],
     bestTime: 'Dec-Mar (Skiing), Jun-Sep (Hiking)',
     climate: 'Alpine',
     timeZone: 'GMT+1',
@@ -343,11 +335,11 @@ export const DESTINATIONS: Destination[] = [
     duration: '5 Nights / 6 Days',
     longDescription: 'Paris is an emotion. We invite you to see the French capital through the eyes of a local connoisseur. Skip the lines at the Louvre with a private art historian, enjoy a dinner cruise on the Seine, and shop with a personal stylist in Le Marais. Stay in a palace hotel with views of the Eiffel Tower and experience the epitome of romance and sophistication.',
     highlights: ['Private Louvre tour', 'Seine River dinner cruise', 'Personal shopper experience', 'Versailles after-hours tour'],
-    gallery: getGallery([
+    gallery: [
       'https://images.unsplash.com/photo-1565881606991-789a8dff9625?q=80&w=800&auto=format&fit=crop', 
       'https://images.unsplash.com/photo-1509040216641-05d97d25c65e?q=80&w=800&auto=format&fit=crop', 
       'https://images.unsplash.com/photo-1460306855393-0410f61241c7?q=80&w=800&auto=format&fit=crop',
-    ], 'paris,france,eiffel'),
+    ],
     bestTime: 'April to June, September to November',
     climate: 'Temperate',
     timeZone: 'GMT+1',
@@ -382,11 +374,11 @@ export const DESTINATIONS: Destination[] = [
     tag: 'Cultural',
     longDescription: 'Immerse yourself in the cultural heart of Japan. Kyoto offers a serene escape into a world of Zen gardens, historic temples, and traditional tea ceremonies. Walk through the iconic Fushimi Inari torii gates, spot geishas in Gion, and stay in a luxury ryokan with a private onsen.',
     highlights: ['Private tea ceremony', 'Exclusive geisha dinner', 'Arashiyama bamboo grove tour', 'Fushimi Inari shrine visit'],
-    gallery: getGallery([
+    gallery: [
       'https://images.unsplash.com/photo-1624253321171-1be53e12f5f4?q=80&w=800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1528360983277-13d9b152c6d7?q=80&w=800&auto=format&fit=crop',
-    ], 'kyoto,japan,temple'),
+    ],
     bestTime: 'March to May, October to November',
     climate: 'Temperate',
     timeZone: 'GMT+9',
@@ -421,11 +413,11 @@ export const DESTINATIONS: Destination[] = [
     tag: 'Romantic',
     longDescription: 'The Amalfi Coast is a vertical landscape of terraced gardens, lemon groves, and pastel-colored villages clinging to the cliffs. Experience the "La Dolce Vita" lifestyle with private boat tours to Capri, sunset aperitivos in Positano, and driving a vintage convertible along the coastal roads.',
     highlights: ['Private boat to Capri', 'Lemon grove tour & Limoncello tasting', 'Sunset dinner in Positano', 'Vintage car coastal drive'],
-    gallery: getGallery([
+    gallery: [
       'https://images.unsplash.com/photo-1533904350260-56144f541978?q=80&w=800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?q=80&w=800&auto=format&fit=crop',
-    ], 'amalfi,italy,coast'),
+    ],
     bestTime: 'May to September',
     climate: 'Mediterranean',
     timeZone: 'GMT+2',
@@ -461,10 +453,10 @@ export const DESTINATIONS: Destination[] = [
     tag: 'Honeymoon',
     longDescription: 'Often called the most beautiful island in the world, Bora Bora is the epitome of romance. Stay in an iconic overwater bungalow with direct access to the lagoon. Spend your days snorkeling with rays, enjoying private motu picnics, and watching the sunset over Mount Otemanu.',
     highlights: ['Overwater bungalow stay', 'Shark & Ray snorkeling safari', 'Private Motu picnic', 'Sunset cruise'],
-    gallery: getGallery([
+    gallery: [
       'https://images.unsplash.com/photo-1532408840135-cbf96604856e?q=80&w=800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=800&auto=format&fit=crop',
-    ], 'borabora,tropical,island'),
+    ],
     bestTime: 'May to October',
     climate: 'Tropical',
     timeZone: 'GMT-10',
@@ -500,10 +492,10 @@ export const DESTINATIONS: Destination[] = [
     tag: 'Adventure',
     longDescription: 'Cape Town is a vibrant city where nature meets urban sophistication. Ascend Table Mountain, drive the scenic Chapman’s Peak, and visit the penguins at Boulders Beach. Our itinerary also includes a taste of the Cape Winelands, renowned for world-class wines and culinary excellence.',
     highlights: ['Table Mountain cable car', 'Cape Winelands tasting', 'Boulders Beach penguins', 'Robben Island tour'],
-    gallery: getGallery([
+    gallery: [
       'https://images.unsplash.com/photo-1576485290814-1c72aa4bbb8e?q=80&w=800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop',
-    ], 'capetown,africa,wine'),
+    ],
     bestTime: 'March to May, September to November',
     climate: 'Mediterranean',
     timeZone: 'GMT+2',
@@ -538,10 +530,10 @@ export const DESTINATIONS: Destination[] = [
     tag: 'History',
     longDescription: 'Journey to the heart of the Inca Empire. Start in Cusco, the archaeological capital of the Americas, before boarding the luxury Hiram Bingham train to Machu Picchu. Explore the mystical ruins with a private guide and absorb the energy of this ancient citadel.',
     highlights: ['Hiram Bingham luxury train', 'Private tour of Machu Picchu', 'Sacred Valley exploration', 'Cusco colonial history'],
-    gallery: getGallery([
+    gallery: [
       'https://images.unsplash.com/photo-1526392060635-9d6019884377?q=80&w=800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1533630654593-b26a195e679c?q=80&w=800&auto=format&fit=crop',
-    ], 'machupicchu,peru,incas'),
+    ],
     bestTime: 'May to October',
     climate: 'Highland subtropical',
     timeZone: 'GMT-5',
@@ -577,10 +569,10 @@ export const DESTINATIONS: Destination[] = [
     tag: 'Nature',
     longDescription: 'Iceland offers landscapes like nowhere else on earth. From the Blue Lagoon’s milky waters to the erupting geysers and massive waterfalls of the Golden Circle. In winter, hunt for the Northern Lights; in summer, enjoy the Midnight Sun. Stay in luxury lodges surrounded by nature.',
     highlights: ['Blue Lagoon retreat', 'Golden Circle private tour', 'Northern Lights hunt (Winter)', 'South Coast waterfalls'],
-    gallery: getGallery([
+    gallery: [
       'https://images.unsplash.com/photo-1476610182048-b716b8518aae?q=80&w=800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1504829857797-ddff29c27927?q=80&w=800&auto=format&fit=crop',
-    ], 'iceland,reykjavik,aurora'),
+    ],
     bestTime: 'Feb-Mar (Lights), Jun-Aug (Summer)',
     climate: 'Subpolar oceanic',
     timeZone: 'GMT',
@@ -615,10 +607,10 @@ export const DESTINATIONS: Destination[] = [
     tag: 'History',
     longDescription: 'Discover the ancient Nabataean city of Petra, a UNESCO World Heritage site. Walk through the Siq to reveal the Treasury, explore the Royal Tombs, and experience genuine Bedouin hospitality. Extend your trip to float in the Dead Sea or camp under the stars in Wadi Rum.',
     highlights: ['Petra by Night', 'Wadi Rum 4x4 tour', 'Dead Sea floating', 'Little Petra visit'],
-    gallery: getGallery([
+    gallery: [
       'https://images.unsplash.com/photo-1548265003-8d6978168257?q=80&w=800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1501236570302-9061b24c3c8b?q=80&w=800&auto=format&fit=crop',
-    ], 'petra,jordan,desert'),
+    ],
     bestTime: 'March to May, September to November',
     climate: 'Desert',
     timeZone: 'GMT+3',
@@ -652,10 +644,10 @@ export const DESTINATIONS: Destination[] = [
     tag: 'Adventure',
     longDescription: 'Queenstown is a playground for thrill-seekers and nature lovers alike. Surrounded by the Southern Alps, it offers everything from bungy jumping and jet boating to world-class Pinot Noir vineyards. Cruise the majestic Milford Sound and enjoy the laid-back Kiwi vibe.',
     highlights: ['Milford Sound helicopter cruise', 'Shotover Jet boat ride', 'Central Otago wine tour', 'Skyline Gondola & Luge'],
-    gallery: getGallery([
+    gallery: [
       'https://images.unsplash.com/photo-1507699622177-388898d9903d?q=80&w=800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1506456346282-3d8434857d4a?q=80&w=800&auto=format&fit=crop',
-    ], 'queenstown,newzealand,adventure'),
+    ],
     bestTime: 'December to February (Summer)',
     climate: 'Oceanic',
     timeZone: 'GMT+12',
@@ -691,10 +683,10 @@ export const DESTINATIONS: Destination[] = [
     tag: 'Culture',
     longDescription: 'Marrakech is a city of contrast, where ancient traditions meet modern luxury. Stay in a traditional Riad, get lost in the winding alleys of the Medina, and marvel at the Koutoubia Mosque. Visit the Majorelle Garden and enjoy a sunset dinner overlooking the bustling Jemaa el-Fnaa square.',
     highlights: ['Private Medina tour', 'Majorelle Garden (YSL)', 'Atlas Mountains day trip', 'Hammam spa experience'],
-    gallery: getGallery([
+    gallery: [
       'https://images.unsplash.com/photo-1539020140153-e479b8c22e70?q=80&w=800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1553535698-132d0df09b43?q=80&w=800&auto=format&fit=crop',
-    ], 'marrakech,morocco,souk'),
+    ],
     bestTime: 'March to May, September to November',
     climate: 'Semi-arid',
     timeZone: 'GMT+1',
@@ -728,10 +720,10 @@ export const DESTINATIONS: Destination[] = [
     tag: 'Safari',
     longDescription: 'The Serengeti National Park is synonymous with the African safari. It is home to the Great Migration, where millions of wildebeest and zebra traverse the plains. Experience thrilling game drives to see the Big Five, sleep in luxury tented camps, and take a hot air balloon ride at sunrise.',
     highlights: ['Great Migration viewing', 'Big Five game drives', 'Hot air balloon safari', 'Ngorongoro Crater visit'],
-    gallery: getGallery([
+    gallery: [
       'https://images.unsplash.com/photo-1535940342674-4b55e8848d7d?q=80&w=800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1526725702345-bdda2b97ef73?q=80&w=800&auto=format&fit=crop',
-    ], 'serengeti,lion,zebra'),
+    ],
     bestTime: 'June to October (Migration)',
     climate: 'Savanna',
     timeZone: 'GMT+3',

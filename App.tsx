@@ -16,12 +16,36 @@ import Testimonials from './pages/Testimonials';
 import Blog from './pages/Blog';
 import WhatsAppButton from './components/WhatsAppButton';
 
-// Scroll to top wrapper
-const ScrollToTop = () => {
+// Extend Window interface for gtag
+declare global {
+  interface Window {
+    gtag: (...args: any[]) => void;
+  }
+}
+
+// Scroll to top wrapper using Hooks
+const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+  
+  return null;
+};
+
+// Analytics Tracker Component
+const AnalyticsTracker: React.FC = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (typeof window.gtag !== 'undefined') {
+      window.gtag('config', 'G-XXXXXXXXXX', {
+        page_path: location.pathname + location.search,
+      });
+    }
+  }, [location]);
+
   return null;
 };
 
@@ -29,6 +53,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
+      <AnalyticsTracker />
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-grow">

@@ -13,7 +13,7 @@ const Logo: React.FC<LogoProps> = ({ className = "", src }) => {
     return (
       <img 
         src={src} 
-        alt="SOSA Travelz" 
+        alt="SOSA DESTINATIONS" 
         className={`h-14 w-auto object-contain select-none ${className}`} 
       />
     );
@@ -111,9 +111,9 @@ const Logo: React.FC<LogoProps> = ({ className = "", src }) => {
                     x="2155" 
                     y="2080" 
                     textAnchor="middle"
-                    style={{ fontFamily: "'Playfair Display', serif", fontSize: '280px', fontWeight: 'bold', fill: `url(#${gradientId})` }}
+                    style={{ fontFamily: "'Playfair Display', serif", fontSize: '230px', fontWeight: 'bold', fill: `url(#${gradientId})` }}
                   >
-                    SOSA TRAVELZ
+                    SOSA DESTINATIONS
                   </text>
               </g>
 

@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { DESTINATIONS } from '../constants';
 import { 
   Calendar, CheckCircle, MapPin, ArrowLeft,
@@ -8,6 +8,7 @@ import {
   Utensils, ShieldCheck, ChevronDown, ChevronLeft, ChevronRight,
   Grid, X, Globe, Coins, Languages, FileCheck, Handshake, Heart, Clock, CloudSun
 } from 'lucide-react';
+import Reveal from '../components/Reveal';
 
 interface ItineraryItemProps {
     item: {
@@ -75,7 +76,8 @@ const DestinationDetail: React.FC = () => {
   const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
-  const [openFAQIndex, setOpenFAQIndex] = useState<number | null>(0);
+  const [openFAQIndex, setOpenFAQIndex] = useState<number | null>(null);
+  
   const destination = DESTINATIONS.find(d => d.id === id);
 
   // Combine main image and gallery for the slider
@@ -114,11 +116,7 @@ const DestinationDetail: React.FC = () => {
   }
 
   const handleBack = () => {
-    if (window.history.state && window.history.state.idx > 0) {
-        navigate(-1);
-    } else {
-        navigate('/destinations');
-    }
+    navigate(-1);
   };
 
   const nextSlide = () => {
@@ -227,23 +225,30 @@ const DestinationDetail: React.FC = () => {
         </div>
       )}
 
-      {/* Hero Section with Carousel */}
-      <div className="relative h-[70vh] w-full overflow-hidden group">
-        {heroImages.map((img, index) => (
-            <div 
-                key={index}
-                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                    index === currentSlide ? 'opacity-100 z-0' : 'opacity-0 -z-10'
-                }`}
-            >
-                <img 
-                  src={img} 
-                  alt={`${destination.name} ${index + 1}`} 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-            </div>
-        ))}
+      {/* Hero Section with Slider */}
+      <div className="relative h-[70vh] w-full overflow-hidden group bg-gray-900">
+        {/* Slider Track */}
+        <div 
+          className="flex h-full w-full transition-transform duration-700 ease-in-out"
+          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+        >
+          {heroImages.map((img, index) => (
+              <div 
+                  key={index}
+                  className="min-w-full h-full relative"
+              >
+                  <img 
+                    src={img} 
+                    alt={`${destination.name} ${index + 1}`} 
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Clean image, no heavy overlay here */}
+              </div>
+          ))}
+        </div>
+
+        {/* Bottom Text Gradient Overlay - Only at the bottom for readability */}
+        <div className="absolute bottom-0 left-0 w-full h-2/3 bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
 
         {/* View All Photos Button */}
         <button 
@@ -338,56 +343,64 @@ const DestinationDetail: React.FC = () => {
                 
                 {/* Overview */}
                 <section>
-                    <h2 className="text-3xl font-serif font-bold text-primary-900 mb-6">The Experience</h2>
-                    <p className="text-gray-600 leading-relaxed text-lg">
-                        {destination.longDescription || destination.description}
-                    </p>
+                    <Reveal>
+                      <h2 className="text-3xl font-serif font-bold text-primary-900 mb-6">The Experience</h2>
+                      <p className="text-gray-600 leading-relaxed text-lg">
+                          {destination.longDescription || destination.description}
+                      </p>
+                    </Reveal>
                 </section>
 
                 {/* Highlights */}
                 {destination.highlights && (
                     <section>
-                        <h3 className="text-2xl font-serif font-bold text-primary-900 mb-6">Journey Highlights</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            {destination.highlights.map((highlight, idx) => (
-                                <div key={idx} className="flex items-start bg-white p-4 shadow-sm border border-gray-100 rounded-[12px]">
-                                    <CheckCircle size={20} className="text-gold-500 mt-1 mr-3 flex-shrink-0" />
-                                    <span className="text-gray-700">{highlight}</span>
-                                </div>
-                            ))}
-                        </div>
+                        <Reveal>
+                          <h3 className="text-2xl font-serif font-bold text-primary-900 mb-6">Journey Highlights</h3>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                              {destination.highlights.map((highlight, idx) => (
+                                  <div key={idx} className="flex items-start bg-white p-4 shadow-sm border border-gray-100 rounded-[12px]">
+                                      <CheckCircle size={20} className="text-gold-500 mt-1 mr-3 flex-shrink-0" />
+                                      <span className="text-gray-700">{highlight}</span>
+                                  </div>
+                              ))}
+                          </div>
+                        </Reveal>
                     </section>
                 )}
 
                 {/* Day-by-Day Itinerary */}
                 {destination.itinerary && destination.itinerary.length > 0 && (
                   <section>
-                    <h3 className="text-2xl font-serif font-bold text-primary-900 mb-8">Daily Itinerary</h3>
-                    <div className="space-y-0 border-l border-gray-200 ml-3">
-                      {destination.itinerary.map((item, idx) => (
-                        <ItineraryAccordionItem key={idx} item={item} />
-                      ))}
-                    </div>
+                    <Reveal>
+                      <h3 className="text-2xl font-serif font-bold text-primary-900 mb-8">Daily Itinerary</h3>
+                      <div className="space-y-0 border-l border-gray-200 ml-3">
+                        {destination.itinerary.map((item, idx) => (
+                          <ItineraryAccordionItem key={idx} item={item} />
+                        ))}
+                      </div>
+                    </Reveal>
                   </section>
                 )}
 
                 {/* Destination Insights Grid */}
                 <div className="pt-12 border-t border-gray-100">
-                     <h3 className="text-2xl font-serif font-bold text-primary-900 mb-6">Destination Insights</h3>
-                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <InsightCard icon={Calendar} label="Best Time to Visit" value={destination.bestTime} />
-                        <InsightCard icon={Clock} label="Ideal Duration" value={destination.duration} />
-                        <InsightCard icon={Heart} label="Ideal For" value={destination.idealFor} />
-                        <InsightCard icon={FileCheck} label="Visa & Entry" value={destination.visaPolicy} />
-                        <InsightCard icon={CloudSun} label="Weather Overview" value={destination.climate} />
-                        <InsightCard icon={Utensils} label="Food & Dietary" value={destination.foodOption} />
-                        <InsightCard icon={Handshake} label="Culture & Etiquette" value={destination.cultureEtiquette} />
-                        <InsightCard icon={ShieldCheck} label="Safety & Support" value={destination.safety} />
-                        <InsightCard icon={Car} label="Getting Around" value={destination.transportation} />
-                        <InsightCard icon={Globe} label="Time Zone" value={destination.timeZone} />
-                        <InsightCard icon={Coins} label="Currency" value={destination.currency} />
-                        <InsightCard icon={Languages} label="Language" value={destination.language} />
-                     </div>
+                     <Reveal>
+                       <h3 className="text-2xl font-serif font-bold text-primary-900 mb-6">Destination Insights</h3>
+                       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                          <InsightCard icon={Calendar} label="Best Time to Visit" value={destination.bestTime} />
+                          {/* Ideal Duration removed as per request */}
+                          <InsightCard icon={Heart} label="Ideal For" value={destination.idealFor} />
+                          <InsightCard icon={FileCheck} label="Visa & Entry" value={destination.visaPolicy} />
+                          <InsightCard icon={CloudSun} label="Weather Overview" value={destination.climate} />
+                          <InsightCard icon={Utensils} label="Food & Dietary" value={destination.foodOption} />
+                          <InsightCard icon={Handshake} label="Culture & Etiquette" value={destination.cultureEtiquette} />
+                          <InsightCard icon={ShieldCheck} label="Safety & Support" value={destination.safety} />
+                          <InsightCard icon={Car} label="Getting Around" value={destination.transportation} />
+                          <InsightCard icon={Globe} label="Time Zone" value={destination.timeZone} />
+                          <InsightCard icon={Coins} label="Currency" value={destination.currency} />
+                          <InsightCard icon={Languages} label="Language" value={destination.language} />
+                       </div>
+                     </Reveal>
                 </div>
 
             </div>
@@ -418,8 +431,10 @@ const DestinationDetail: React.FC = () => {
       {/* Partners Section */}
       <section className="py-20 bg-white border-t border-gray-100 overflow-hidden">
         <div className="container mx-auto px-6 text-center mb-12">
-          <p className="text-sm font-bold text-gold-500 uppercase tracking-widest mb-3">Preferred Partners</p>
-          <h3 className="text-2xl font-serif font-bold text-primary-900">Luxury Travel Alliances</h3>
+          <Reveal>
+            <p className="text-sm font-bold text-gold-500 uppercase tracking-widest mb-3">Preferred Partners</p>
+            <h3 className="text-2xl font-serif font-bold text-primary-900">Luxury Travel Alliances</h3>
+          </Reveal>
         </div>
         
         {/* 
@@ -452,33 +467,35 @@ const DestinationDetail: React.FC = () => {
       {/* FAQ Section */}
       <section className="py-20 bg-cream border-t border-gray-100">
         <div className="container mx-auto px-6 max-w-4xl">
-           <div className="text-center mb-12">
-             <h3 className="text-3xl font-serif font-bold text-primary-900 mb-4">Frequently Asked Questions</h3>
-             <p className="text-gray-600">Everything you need to know about this journey.</p>
-           </div>
-           
-           <div className="bg-white rounded-[12px] p-8 md:p-12 shadow-xl border border-gray-100">
-              {faqs.map((faq, index) => (
-                <div key={index} className="border-b border-gray-100 last:border-0">
-                  <button
-                    className="flex items-center justify-between w-full py-6 text-left focus:outline-none group"
-                    onClick={() => toggleFAQ(index)}
-                  >
-                    <span className={`text-lg md:text-xl font-serif font-bold transition-colors ${openFAQIndex === index ? 'text-gold-500' : 'text-primary-900 group-hover:text-gold-500'}`}>
-                      {faq.question}
-                    </span>
-                    <span className={`flex-shrink-0 ml-4 w-8 h-8 rounded-full flex items-center justify-center border transition-all duration-300 ${openFAQIndex === index ? 'bg-gold-500 border-gold-500 text-white -rotate-180' : 'border-gray-200 text-gray-400 group-hover:border-gold-500 group-hover:text-gold-500'}`}>
-                       <ChevronDown size={16} />
-                    </span>
-                  </button>
-                  <div 
-                    className={`overflow-hidden transition-all duration-500 ease-in-out ${openFAQIndex === index ? 'max-h-40 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
-                  >
-                    <p className="text-gray-600 leading-relaxed text-base">{faq.answer}</p>
+           <Reveal>
+             <div className="text-center mb-12">
+               <h3 className="text-3xl font-serif font-bold text-primary-900 mb-4">Frequently Asked Questions</h3>
+               <p className="text-gray-600">Everything you need to know about this journey.</p>
+             </div>
+             
+             <div className="bg-white rounded-[12px] p-8 md:p-12 shadow-xl border border-gray-100">
+                {faqs.map((faq, index) => (
+                  <div key={index} className="border-b border-gray-100 last:border-0">
+                    <button
+                      className="flex items-center justify-between w-full py-6 text-left focus:outline-none group"
+                      onClick={() => toggleFAQ(index)}
+                    >
+                      <span className={`text-lg md:text-xl font-serif font-bold transition-colors ${openFAQIndex === index ? 'text-gold-500' : 'text-primary-900 group-hover:text-gold-500'}`}>
+                        {faq.question}
+                      </span>
+                      <span className={`flex-shrink-0 ml-4 w-8 h-8 rounded-full flex items-center justify-center border transition-all duration-300 ${openFAQIndex === index ? 'bg-gold-500 border-gold-500 text-white -rotate-180' : 'border-gray-200 text-gray-400 group-hover:border-gold-500 group-hover:text-gold-500'}`}>
+                         <ChevronDown size={16} />
+                      </span>
+                    </button>
+                    <div 
+                      className={`overflow-hidden transition-all duration-500 ease-in-out ${openFAQIndex === index ? 'max-h-40 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
+                    >
+                      <p className="text-gray-600 leading-relaxed text-base">{faq.answer}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
-           </div>
+                ))}
+             </div>
+           </Reveal>
         </div>
       </section>
 

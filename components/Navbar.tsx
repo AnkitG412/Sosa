@@ -5,9 +5,9 @@ import { Menu, X, Phone, Mail } from 'lucide-react';
 import Logo from './Logo';
 
 const Navbar: React.FC = () => {
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
