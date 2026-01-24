@@ -19,9 +19,6 @@ const Logo: React.FC<LogoProps> = ({ className = "", src }) => {
     );
   }
 
-  // Otherwise, render the corrected SVG
-  const gradientId = "sosa_logo_gradient";
-
   return (
     <svg 
       version="1.1" 
@@ -30,21 +27,6 @@ const Logo: React.FC<LogoProps> = ({ className = "", src }) => {
       style={{ fillRule: 'evenodd', clipRule: 'evenodd', strokeLinecap: 'round', strokeLinejoin: 'round', strokeMiterlimit: 1.5 }}
       xmlns="http://www.w3.org/2000/svg"
     >
-      <defs>
-        <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0,238.26,-238.26,0,2154.99,1848.65)">
-            <stop offset="0" stopColor="#f3d36e" stopOpacity="1"/>
-            <stop offset="0.28" stopColor="#f5d672" stopOpacity="1"/>
-            <stop offset="0.37" stopColor="#fadc7c" stopOpacity="1"/>
-            <stop offset="0.45" stopColor="#ffe386" stopOpacity="1"/>
-            <stop offset="0.73" stopColor="#ddb631" stopOpacity="1"/>
-            <stop offset="1" stopColor="#d2a714" stopOpacity="1"/>
-        </linearGradient>
-      </defs>
-      
-      {/* 
-          Restoring the nested group structure with modified transforms for the text 
-          to ensure perfect alignment below the logo.
-      */}
       <g transform="translate(-3364.91643, -603.434739)">
         <g transform="translate(3178.16643, 0)">
           <g transform="translate(0, 317.475913)">
@@ -85,9 +67,9 @@ const Logo: React.FC<LogoProps> = ({ className = "", src }) => {
               <g id="compass" transform="translate(0, -36.954241)">
                  <g transform="matrix(0.535756,0,0,0.535756,344.592213,880.899938)">
                     <path d="M2636.12,1648L2305.25,2127.76L2636.12,2607.51L2156.59,2276.42L1676.84,2607.51L2007.93,2127.76L1676.84,1648L2156.59,1979.1L2636.12,1648Z" fillOpacity="0"/>
-                    <path d="M2572.47,1711.88L2156.59,2127.76L2156.59,2004.14L2572.47,1711.88Z" fill="#fbd990"/>
-                    <path d="M2572.47,2543.64L2156.59,2127.76L2280.21,2127.76L2572.47,2543.64Z" fill="#fbd990"/>
-                    <path d="M2572.47,1711.88L2156.59,2127.76L2280.21,2127.76L2572.47,1711.88Z" fill="#c18b04"/>
+                    <path d="M2572.47,1711.88L2156.59,2127.76L2280.21,2127.76L2572.47,1711.88Z" fill="#fbd990"/>
+                    <path d="M2572.47,2543.64L2156.59,2127.76L2156.59,2251.37L2572.47,2543.64Z" fill="#fbd990"/>
+                    <path d="M2572.47,1711.88L2156.59,2127.76L2156.59,2004.14L1740.71,1711.88Z" fill="#c18b04"/>
                     <path d="M2572.47,2543.64L2156.59,2127.76L2156.59,2251.37L2572.47,2543.64Z" fill="#c18b04"/>
                     <path d="M1740.71,2543.64L2156.59,2127.76L2032.75,2127.76L1740.71,2543.64Z" fill="#c18b04"/>
                     <path d="M1740.71,1711.88L2156.59,2127.76L2156.59,2004.14L1740.71,1711.88Z" fill="#c18b04"/>
@@ -111,7 +93,12 @@ const Logo: React.FC<LogoProps> = ({ className = "", src }) => {
                     x="2155" 
                     y="2080" 
                     textAnchor="middle"
-                    style={{ fontFamily: "'Playfair Display', serif", fontSize: '230px', fontWeight: 'bold', fill: `url(#${gradientId})` }}
+                    style={{ 
+                        fontFamily: "'Playfair Display', serif", 
+                        fontSize: '230px', 
+                        fontWeight: 'bold', 
+                        fill: '#c18b04'
+                    }}
                   >
                     SOSA DESTINATIONS
                   </text>

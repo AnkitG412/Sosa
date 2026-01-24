@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
@@ -6,9 +7,6 @@ const rootElement = document.getElementById('root');
 if (!rootElement) {
   throw new Error("Could not find root element to mount to");
 }
-
-// Ensure the app always starts at the home page on load/reload
-window.location.hash = '/';
 
 const root = ReactDOM.createRoot(rootElement);
 root.render(

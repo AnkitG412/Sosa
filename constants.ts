@@ -3,7 +3,7 @@ import { Destination, Testimonial, BlogPost, CountryCode } from './types';
 
 export const SITE_IMAGES = {
   home: {
-    about: 'https://raw.githubusercontent.com/AnkitG412/Sosa/main/Public/my%20picture%20final.png',
+    about: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1920&auto=format&fit=crop',
   },
   bespoke: {
     hero: 'https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1920&auto=format&fit=crop',

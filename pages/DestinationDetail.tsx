@@ -35,7 +35,7 @@ const PartnerLogo = ({ name, url }: { name: string; url: string }) => {
     <img
       src={url}
       alt={name}
-      className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 hover:brightness-110 transition-all duration-300 opacity-70 hover:opacity-100"
+      className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300 opacity-90 hover:opacity-100"
       onError={() => setError(true)}
       loading="lazy"
     />
@@ -139,13 +139,13 @@ const DestinationDetail: React.FC = () => {
   ];
 
   const partners = [
-    { name: 'Emirates', logo: 'https://cdn.worldvectorlogo.com/logos/emirates-airlines.svg' },
-    { name: 'Qatar Airways', logo: 'https://cdn.worldvectorlogo.com/logos/qatar-airways.svg' },
-    { name: 'Marriott', logo: 'https://cdn.worldvectorlogo.com/logos/marriott.svg' },
-    { name: 'Taj Hotels', logo: 'https://cdn.worldvectorlogo.com/logos/taj-hotels-resorts-and-palaces.svg' },
-    { name: 'Hilton', logo: 'https://cdn.worldvectorlogo.com/logos/hilton-hotels-1.svg' },
+    { name: 'Emirates', logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d0/Emirates_logo.svg' },
+    { name: 'Qatar Airways', logo: 'https://upload.wikimedia.org/wikipedia/en/9/9b/Qatar_Airways_Logo.svg' },
+    { name: 'Marriott', logo: 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Marriott_Hotels_logo.svg' },
+    { name: 'Taj Hotels', logo: 'https://upload.wikimedia.org/wikipedia/en/8/82/Taj_Hotels_logo.svg' },
+    { name: 'Hilton', logo: 'https://upload.wikimedia.org/wikipedia/commons/c/c2/Hilton_Hotels_%26_Resorts_logo.svg' },
     { name: 'Four Seasons', logo: 'https://upload.wikimedia.org/wikipedia/en/5/5b/Four_Seasons_Hotels_and_Resorts_logo.svg' },
-    { name: 'ITC Hotels', logo: 'https://cdn.worldvectorlogo.com/logos/itc-limited.svg' },
+    { name: 'ITC Hotels', logo: 'https://upload.wikimedia.org/wikipedia/commons/f/f4/ITC_Hotels_Logo.svg' },
   ];
 
   const faqs = [

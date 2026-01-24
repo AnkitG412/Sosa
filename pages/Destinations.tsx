@@ -36,35 +36,61 @@ const Destinations: React.FC = () => {
 
       <div className="container mx-auto px-6 py-16">
         <Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {DESTINATIONS.map((dest) => (
-              <div key={dest.id} className="bg-white shadow-lg rounded-[12px] overflow-hidden group hover:shadow-2xl transition-all duration-300 flex flex-col">
-                <div className="relative h-80 overflow-hidden">
-                  <Link to={`/destinations/${dest.id}`}>
-                      <img 
+              <div key={dest.id} className="group relative h-[500px] rounded-[12px] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer bg-gray-900">
+                <Link to={`/destinations/${dest.id}`} className="block h-full w-full relative">
+                    
+                    {/* Background Image */}
+                    <img 
                       src={dest.imageUrl} 
                       alt={dest.name} 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                  </Link>
-                  <button
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                    />
+                    
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
+
+                    {/* Content Layer */}
+                    <div className="absolute bottom-0 left-0 w-full p-8 z-20 flex flex-col justify-end h-full">
+                        <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                            {/* Tag */}
+                            {dest.tag ? (
+                                <span className="text-gold-500 font-bold uppercase tracking-widest text-xs mb-3 inline-block">
+                                    {dest.tag}
+                                </span>
+                            ) : (
+                                <span className="text-gold-500 font-bold uppercase tracking-widest text-xs mb-3 inline-block">
+                                    Premium
+                                </span>
+                            )}
+                            
+                            {/* Title */}
+                            <h3 className="text-4xl font-serif font-bold text-white mb-3 drop-shadow-md">
+                                {dest.name}
+                            </h3>
+                            
+                            {/* Description */}
+                            <p className="text-gray-200 text-sm leading-relaxed mb-6 line-clamp-2 opacity-90">
+                                {dest.description}
+                            </p>
+                            
+                            {/* CTA */}
+                            <div className="inline-block border-b border-gold-500 pb-1 text-white text-xs font-bold uppercase tracking-widest group-hover:text-gold-400 group-hover:border-gold-400 transition-colors">
+                                Discover More
+                            </div>
+                        </div>
+                    </div>
+                </Link>
+                
+                {/* Share Button (Top Right) */}
+                <button
                     onClick={(e) => handleShare(e, dest)}
-                    className="absolute top-4 right-4 bg-white/90 p-2.5 rounded-full text-primary-900 hover:text-gold-500 hover:bg-white transition-all shadow-md z-10 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-300"
+                    className="absolute top-6 right-6 bg-white/10 backdrop-blur-md p-2.5 rounded-full text-white hover:bg-white hover:text-primary-900 transition-all shadow-lg z-30 opacity-0 group-hover:opacity-100 transform -translate-y-2 group-hover:translate-y-0 duration-300 border border-white/20"
                     title="Share"
-                  >
+                >
                     <Share2 size={18} />
-                  </button>
-                </div>
-                <div className="p-8 flex flex-col flex-grow">
-                  <h3 className="text-2xl font-serif font-bold text-primary-900 mb-2">
-                      <Link to={`/destinations/${dest.id}`} className="hover:text-gold-500 transition-colors">{dest.name}</Link>
-                  </h3>
-                  <p className="text-gray-600 text-base mb-8 line-clamp-3 flex-grow">{dest.description}</p>
-                  
-                  <Link to={`/destinations/${dest.id}`} className="block w-full text-center border border-gold-500 text-gold-600 py-3 text-sm uppercase tracking-widest font-bold hover:bg-gold-500 hover:text-white transition-colors rounded-[6px]">
-                    View Itinerary
-                  </Link>
-                </div>
+                </button>
               </div>
             ))}
           </div>
