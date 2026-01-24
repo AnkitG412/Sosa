@@ -148,7 +148,7 @@ const InteractiveMap: React.FC = () => {
                 <div style="padding: 12px; font-family: 'Playfair Display', serif; text-align: center;">
                     <h3 style="margin: 0 0 8px; color: #0B3B2D; font-size: 18px; font-weight: bold;">${dest.name}</h3>
                     <p style="margin: 0 0 12px; font-family: 'Lato', sans-serif; font-size: 13px; color: #555;">${dest.location}</p>
-                    <a href="#/destinations/${dest.id}" style="display: inline-block; background-color: #c5a028; color: white; text-decoration: none; padding: 6px 12px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; border-radius: 2px;">View Itinerary</a>
+                    <a href="/destinations/${dest.id}" style="display: inline-block; background-color: #c5a028; color: white; text-decoration: none; padding: 6px 12px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; border-radius: 2px;">View Itinerary</a>
                 </div>
                 `;
                 infoWindow.setContent(contentString);
@@ -204,7 +204,7 @@ const InteractiveMap: React.FC = () => {
                     <div style="font-family: 'Playfair Display', serif; text-align: center; min-width: 160px;">
                         <h3 style="margin: 0 0 5px; color: #0B3B2D; font-size: 16px; font-weight: bold;">${dest.name}</h3>
                         <p style="margin: 0 0 10px; font-family: 'Lato', sans-serif; font-size: 12px; color: #555;">${dest.location}</p>
-                        <a href="#/destinations/${dest.id}" style="display: inline-block; background-color: #c5a028; color: white; text-decoration: none; padding: 5px 10px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; border-radius: 2px;">View Itinerary</a>
+                        <a href="/destinations/${dest.id}" style="display: inline-block; background-color: #c5a028; color: white; text-decoration: none; padding: 5px 10px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; border-radius: 2px;">View Itinerary</a>
                     </div>
                 `;
                 
@@ -248,4 +248,3 @@ const InteractiveMap: React.FC = () => {
 };
 
 export default InteractiveMap;
-    

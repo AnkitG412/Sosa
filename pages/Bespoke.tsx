@@ -9,7 +9,7 @@ const Bespoke: React.FC = () => {
   const handleShare = (e: React.MouseEvent, dest: typeof DESTINATIONS[0]) => {
     e.preventDefault();
     e.stopPropagation();
-    const url = `${window.location.origin}/#/destinations/${dest.id}`;
+    const url = `${window.location.origin}/destinations/${dest.id}`;
     const text = `Bespoke journey idea: ${dest.name} on SOSA Travelz`;
 
     if (navigator.share) {
