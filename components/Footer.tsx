@@ -1,11 +1,13 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, MapPin, Phone, Check } from 'lucide-react';
+import { Mail, MapPin, Phone, Check, MessageSquare } from 'lucide-react';
 import Logo from './Logo';
+import FeedbackModal from './FeedbackModal';
 
 const Footer: React.FC = () => {
   const [emailCopied, setEmailCopied] = useState(false);
+  const [showFeedback, setShowFeedback] = useState(false);
 
   const handleCopyEmail = () => {
     const email = "hello.sosa777@gmail.com";
@@ -107,11 +109,25 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="relative pt-8 text-center text-gray-500 text-sm">
+        {/* Bottom Section: Feedback & Copyright */}
+        <div className="relative pt-8 flex flex-col items-center gap-4">
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-20"></div>
-          <p>&copy; {new Date().getFullYear()} SOSA Travelz. All rights reserved.</p>
+          
+          {/* Feedback Trigger */}
+          <button 
+            onClick={() => setShowFeedback(true)}
+            className="group flex items-center gap-2 text-gray-400 hover:text-gold-500 transition-all duration-300 py-1"
+          >
+             <MessageSquare size={14} className="group-hover:scale-110 transition-transform" />
+             <span className="text-xs font-bold uppercase tracking-widest">Share Your Feedback</span>
+          </button>
+
+          <p className="text-gray-500 text-sm">&copy; {new Date().getFullYear()} SOSA Travelz. All rights reserved.</p>
         </div>
       </div>
+
+      {/* Feedback Modal */}
+      <FeedbackModal isOpen={showFeedback} onClose={() => setShowFeedback(false)} />
     </footer>
   );
 };

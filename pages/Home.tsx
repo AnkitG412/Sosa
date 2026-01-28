@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { DESTINATIONS, TESTIMONIALS, SITE_IMAGES } from '../constants';
+import { DESTINATIONS, TESTIMONIALS as STATIC_TESTIMONIALS, SITE_IMAGES } from '../constants';
 import { ArrowRight, Star, Briefcase, MapPin, Sparkles, ChevronLeft, ChevronRight, ChevronDown, Clock, Share2, Plane } from 'lucide-react';
 import EnquiryForm from '../components/EnquiryForm';
 import Reveal from '../components/Reveal';
@@ -111,10 +111,29 @@ const Home: React.FC = () => {
   };
 
   // Testimonial Carousel State
+  const [allTestimonials, setAllTestimonials] = useState(STATIC_TESTIMONIALS);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const [visibleTestimonials, setVisibleTestimonials] = useState(3);
 
+  // Load User Reviews from LocalStorage
+  const loadReviews = () => {
+    try {
+        const localReviews = JSON.parse(localStorage.getItem('sosa_user_reviews') || '[]');
+        // Combine local reviews (first) with static reviews
+        setAllTestimonials([...localReviews, ...STATIC_TESTIMONIALS]);
+        // Reset index to show new ones first
+        setTestimonialIndex(0);
+    } catch (e) {
+        console.error("Error loading reviews", e);
+    }
+  };
+
   useEffect(() => {
+    loadReviews();
+    
+    // Listen for new reviews being added via modal
+    window.addEventListener('review-added', loadReviews);
+    
     const handleResize = () => {
       if (window.innerWidth < 768) {
         setVisibleTestimonials(1);
@@ -127,19 +146,23 @@ const Home: React.FC = () => {
     
     handleResize(); // Init
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    
+    return () => {
+        window.removeEventListener('resize', handleResize);
+        window.removeEventListener('review-added', loadReviews);
+    };
   }, []);
 
   const nextTestimonial = () => {
     setTestimonialIndex((prev) => {
-      const maxIndex = TESTIMONIALS.length - visibleTestimonials;
+      const maxIndex = allTestimonials.length - visibleTestimonials;
       return prev >= maxIndex ? 0 : prev + 1;
     });
   };
 
   const prevTestimonial = () => {
     setTestimonialIndex((prev) => {
-      const maxIndex = TESTIMONIALS.length - visibleTestimonials;
+      const maxIndex = allTestimonials.length - visibleTestimonials;
       return prev <= 0 ? maxIndex : prev - 1;
     });
   };
@@ -471,13 +494,13 @@ const Home: React.FC = () => {
                       className="flex transition-transform duration-500 ease-out"
                       style={{ transform: `translateX(-${testimonialIndex * (100 / visibleTestimonials)}%)` }}
                   >
-                      {TESTIMONIALS.map((testimonial) => (
+                      {allTestimonials.map((testimonial) => (
                       <div 
                           key={testimonial.id} 
                           className="flex-shrink-0 px-4 pt-16"
                           style={{ width: `${100 / visibleTestimonials}%` }}
                       >
-                          <div className="bg-white rounded-[12px] p-8 relative text-center shadow-2xl hover:-translate-y-2 transition-transform duration-300 h-full">
+                          <div className="bg-white rounded-[12px] p-8 relative text-center shadow-2xl hover:-translate-y-2 transition-transform duration-300 h-full flex flex-col justify-between">
                               {/* User Image - Overlapping Top */}
                               <div className="absolute -top-12 left-1/2 transform -translate-x-1/2">
                                   <div className="w-24 h-24 rounded-full border-4 border-white shadow-lg overflow-hidden bg-gray-200">
@@ -489,18 +512,20 @@ const Home: React.FC = () => {
                                   </div>
                               </div>
                               
-                              <h3 className="text-xl font-bold text-primary-900 mb-1 mt-6">{testimonial.name}</h3>
-                              <p className="text-sm text-gray-500 uppercase tracking-widest mb-4">{testimonial.designation || testimonial.location}</p>
-                              
-                              <div className="flex justify-center gap-1 mb-6 text-gold-500">
-                                  {[...Array(5)].map((_, i) => (
-                                  <Star key={i} size={16} fill={i < testimonial.rating ? "currentColor" : "none"} className={i < testimonial.rating ? "" : "text-gray-300"} />
-                                  ))}
-                              </div>
+                              <div className="mt-8">
+                                <h3 className="text-xl font-bold text-primary-900 mb-1">{testimonial.name}</h3>
+                                <p className="text-sm text-gray-500 uppercase tracking-widest mb-4">{testimonial.designation || testimonial.location}</p>
+                                
+                                <div className="flex justify-center gap-1 mb-6 text-gold-500">
+                                    {[...Array(5)].map((_, i) => (
+                                    <Star key={i} size={16} fill={i < testimonial.rating ? "currentColor" : "none"} className={i < testimonial.rating ? "" : "text-gray-300"} />
+                                    ))}
+                                </div>
 
-                              <p className="text-gray-600 leading-relaxed italic">
-                                  "{testimonial.quote}"
-                              </p>
+                                <p className="text-gray-600 leading-relaxed italic">
+                                    "{testimonial.quote}"
+                                </p>
+                              </div>
                           </div>
                       </div>
                       ))}

@@ -10,9 +10,8 @@ interface LogoProps {
 const Logo: React.FC<LogoProps> = ({ className = "", light, src }) => {
   const [error, setError] = useState(false);
 
-  // Updated to use the specific PNG logo provided
-  // Using raw.githack.com to ensure the file is served with the correct image headers
-  const defaultSrc = "https://raw.githack.com/AnkitG412/Sosa/main/Public/new%20sosa%20logo.png";
+  // Using jsDelivr CDN which is optimized for serving files from GitHub and is more reliable than raw links
+  const defaultSrc = "https://cdn.jsdelivr.net/gh/AnkitG412/Sosa@main/Public/new%20sosa%20logo.png";
   const logoSrc = src || defaultSrc;
 
   // Fallback to text if the image fails to load
@@ -29,7 +28,6 @@ const Logo: React.FC<LogoProps> = ({ className = "", light, src }) => {
       src={logoSrc} 
       alt="SOSA Travelz" 
       onError={() => setError(true)}
-      // Removed 'brightness-0 invert' to ensure the logo renders with its original colors
       className={`h-16 w-auto object-contain select-none transition-opacity duration-300 ${className}`} 
     />
   );
